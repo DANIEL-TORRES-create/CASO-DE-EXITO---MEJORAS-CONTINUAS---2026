@@ -213,6 +213,7 @@ a{color:var(--navy-700);}
 .pillar-chip.mant{background:var(--mant-bg); color:var(--mant);}
 .pillar-chip.op{background:var(--op-bg); color:var(--op);}
 .pillar-chip.seg{background:var(--seg-bg); color:var(--seg);}
+.pillar-chip.proceso{background:#E4EEF9; color:var(--navy-700);}
 .headline-stat{
   flex-shrink:0; text-align:right; border-left:1px solid var(--line); padding-left:26px;
 }
@@ -298,6 +299,11 @@ a{color:var(--navy-700);}
 }
 .stat-card .stat-lbl{font-size:12.5px; color:var(--muted); margin-bottom:8px;}
 .stat-card .stat-val{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; color:var(--navy-950);}
+
+.need-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px;}
+.need-card{background:var(--mist); border-radius:var(--radius); padding:15px 17px; border-left:3px solid var(--navy-700);}
+.need-card .need-title{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; color:var(--navy-950); margin-bottom:6px;}
+.need-card p{font-size:13.5px; color:var(--muted); margin:0;}
 
 /* before -> after */
 .compare-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:4px;}
@@ -583,7 +589,22 @@ footer.site-footer{
       <div class="stop-label">Contexto del cliente</div>
       <h3>Una flota dividida en dos operaciones, con datos que no se traducían en gestión</h3>
       <div class="stop-body">
-        <p>ARDEPE es una empresa de transporte de carga que opera bajo dos frentes claramente diferenciados: flota <strong>LOCAL</strong> y flota <strong>PROVINCIA</strong>, cada una con su propia dinámica, sus propios costos y sus propios riesgos operativos. Toda su flota está monitoreada bajo MyGeotab, lo que le da al cliente una base de datos de telemetría robusta, pero que, sin herramientas que la traduzcan a información de gestión, se quedaba solo en datos crudos, sin uso práctico para las áreas de Mantenimiento, Operaciones y Seguridad.</p>
+        <p>ARDEPE es una empresa de transporte de carga que opera bajo dos frentes claramente diferenciados, cada uno con su propia dinámica, sus propios costos y sus propios riesgos operativos.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Flota</div>
+            <div class="stat-val" style="font-size:16px;">LOCAL + PROVINCIA</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Monitoreo</div>
+            <div class="stat-val" style="font-size:16px;">MyGeotab</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Pilares atendidos</div>
+            <div class="stat-val" style="font-size:16px;">Mantenimiento, Operación, Seguridad</div>
+          </div>
+        </div>
+        <p style="margin-top:16px;">Toda la flota está monitoreada, lo que le da al cliente una base de datos de telemetría robusta, pero sin herramientas que la traduzcan a información de gestión, se quedaba en datos crudos, sin uso práctico para esas tres áreas.</p>
       </div>
     </div>
 
@@ -659,7 +680,7 @@ footer.site-footer{
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Cuatro herramientas a medida, más acompañamiento directo en campo</h3>
       <div class="stop-body">
-        <p>Se hizo un trabajo de campo previo de entendimiento profundo de cómo ARDEPE trabajaba internamente, replicando esa lógica dentro de herramientas automatizadas, integradas directo a MyGeotab. Cada pestaña de abajo es un desarrollo distinto.</p>
+        <p>Antes de programar cualquier cosa, hubo trabajo de campo para entender cómo trabajaba ARDEPE por dentro. Esa lógica real fue la que se llevó a herramientas automatizadas, integradas directo a MyGeotab. Cada pestaña de abajo es un desarrollo distinto.</p>
 
         <div class="tool-tabs-wrap" data-toolgroup="ardepe-main">
 
@@ -796,11 +817,11 @@ footer.site-footer{
           <div class="conclusion-tag">Retención de cliente</div>
           <div class="subq">
             <div class="subq-q">¿Por qué consideramos que este es un caso de éxito?</div>
-            <p>Porque lo consideramos una mejora continua: no se limitó a resolver una queja puntual, sino que atendió a la vez tres pilares (Mantenimiento, Operación y Seguridad) del mismo cliente, y ese nivel de cobertura fue lo que revirtió una decisión ya tomada de cambiar de proveedor.</p>
+            <p>Porque lo consideramos una mejora continua: atendió a la vez tres pilares del mismo cliente (Mantenimiento, Operación y Seguridad), con resultados medibles en cada uno. El cliente, que a inicios de 2026 evaluaba activamente un cambio de proveedor, hoy usa estas cuatro herramientas como parte de su operación diaria, y la relación sigue en desarrollo.</p>
           </div>
           <div class="subq">
             <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
-            <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Fue esa combinación de herramientas que resuelven el trabajo diario, más acompañamiento real con los conductores, lo que consolidó la relación comercial.</p>
+            <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Esa combinación, herramientas que resuelven el trabajo diario más acompañamiento real con los conductores, es lo que el cliente valora hoy en la relación.</p>
           </div>
           <div class="subq">
             <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
@@ -853,22 +874,54 @@ footer.site-footer{
       <div class="stop-label">Contexto del cliente</div>
       <h3>Una flota con tres tipos de combustible, y tres estructuras de costo distintas</h3>
       <div class="stop-body">
-        <p>RACIEMSA es una empresa de transporte con una particularidad que complejiza su gestión: opera una flota mixta con tres tipos de combustible (<strong>Diesel, GNV y GNL</strong>), cada uno con su propio comportamiento y sus propios riesgos. Es un cliente potencial referido por San Bartolomé, actualmente en proceso de evaluación para firmar contrato con Navisaf.</p>
+        <p>RACIEMSA es una empresa de transporte con una particularidad que complejiza su gestión: opera una flota mixta, cada tipo de combustible con su propio comportamiento y sus propios riesgos.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Flota</div>
+            <div class="stat-val" style="font-size:16px;">Diesel, GNV, GNL</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Origen del contacto</div>
+            <div class="stat-val" style="font-size:16px;">Referido por San Bartolomé</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Estado</div>
+            <div class="stat-val" style="font-size:16px;">En evaluación de contrato</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 2. Necesidad -->
     <div class="stop">
       <div class="stop-label">Necesidad, problemática o expectativa</div>
-      <h3>Ciego frente a la presión de sus neumáticos, y sin autonomía para detectar sustracciones</h3>
+      <h3>Cuatro frentes sin resolver, no solo uno</h3>
       <div class="stop-body">
         <div class="subq">
           <div class="subq-q">¿Qué situación identificó el cliente?</div>
-          <p>El cliente ya contaba con sensores TPMS instalados de forma parcial en su flota, a través de su dealer, pero sin ninguna integración con su plataforma de gestión. En la práctica, aunque existían algunos sensores, el cliente estaba prácticamente ciego frente a la presión de sus neumáticos en tiempo real: no había un puente entre el TPMS y Navisaf que permitiera gestionar esa información de forma activa. A esto se sumaba la falta de control en tiempo real de sus abastecimientos de combustible, y una limitación del sistema base para cruzar variables como RPM, nivel de combustible, ignición y velocidad de forma ágil.</p>
+          <p>Al conversar con el cliente aparecieron cuatro problemas puntuales, cada uno con su propio costo para la operación:</p>
+          <div class="need-grid">
+            <div class="need-card">
+              <div class="need-title">Presión de neumáticos</div>
+              <p>TPMS instalado solo de forma parcial, sin integración con la plataforma de gestión: el cliente estaba ciego en tiempo real.</p>
+            </div>
+            <div class="need-card">
+              <div class="need-title">Combustible</div>
+              <p>Sin control en tiempo real de los abastecimientos ni visibilidad de cada carga.</p>
+            </div>
+            <div class="need-card">
+              <div class="need-title">Autonomía de diagnóstico</div>
+              <p>El sistema base no podía cruzar RPM, nivel de combustible, ignición y velocidad de forma ágil. Ya había indicios de irregularidades en grifos aledaños que el cliente no podía comprobar por su cuenta.</p>
+            </div>
+            <div class="need-card">
+              <div class="need-title">Costo-kilómetro</div>
+              <p>Sin un cálculo claro ni desagregado por tipo de combustible (Diesel, GNV, GNL).</p>
+            </div>
+          </div>
         </div>
         <div class="subq">
           <div class="subq-q">¿Cuál era la necesidad o el reto a resolver?</div>
-          <p>El reto no era simplemente usar el TPMS que ya existía, sino impulsar junto con el dealer la ampliación de la instalación de estos sensores en toda la flota, para que desde la plataforma se pudiera finalmente gestionar esa información en tiempo real, cruzarla con el resto de la operación y generar alertas accionables. A esto se sumaba la necesidad de un costo-kilómetro diario, claro y desagregado por tipo de combustible.</p>
+          <p>Resolver los cuatro frentes a la vez: ampliar el TPMS junto con el dealer para gestionar la presión en tiempo real, dar visibilidad de combustible, habilitar diagnóstico ágil cruzando variables, y entregar un costo-kilómetro diario y desagregado.</p>
         </div>
       </div>
     </div>
@@ -1023,6 +1076,7 @@ footer.site-footer{
               <span class="compare-arrow">→</span>
               <span class="compare-val after">Ágil y con datos cruzados</span>
             </div>
+            <div class="compare-note">Con el analizador ya se identificaron casos de posible sustracción en unidades que repostaban en grifos aledaños (detalle reservado por confidencialidad del cliente).</div>
           </div>
         </div>
         <p style="margin-top:18px;">El cliente dejó de depender exclusivamente del TPMS de su dealer y ahora gestiona esta información de forma autónoma, con datos cruzados en tiempo real para hacer diagnósticos más rápidos y sustentados.</p>
@@ -1041,7 +1095,7 @@ footer.site-footer{
           </div>
           <div class="subq">
             <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
-            <p>RACIEMSA dejó de depender únicamente del TPMS de su dealer sin visibilidad propia, y hoy gestiona presión de neumáticos, combustible y costo-kilómetro por tipo de combustible desde una sola plataforma. Ese es exactamente el efecto que se buscaba: que el cliente sienta la necesidad de Navisaf y vea con claridad qué lo diferencia de cualquier otra opción del mercado.</p>
+            <p>RACIEMSA dejó de depender únicamente del TPMS de su dealer sin visibilidad propia, y hoy gestiona presión de neumáticos, combustible y costo-kilómetro por tipo de combustible desde una sola plataforma, sin haber firmado todavía ningún contrato con Navisaf.</p>
           </div>
           <div class="subq">
             <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
@@ -1070,12 +1124,13 @@ footer.site-footer{
     <div class="case-hero-inner">
       <div class="hero-logo-box is-photo"><img src="assets/cummins/hero.png" alt="Cummins"></div>
       <div class="case-hero-text">
-        <div class="case-kicker">Mejora continua · Modernización tecnológica</div>
+        <div class="case-kicker">Mejora continua · En proceso</div>
         <h2>CUMMINS · PSA</h2>
         <div class="pillar-row">
           <span class="pillar-chip mant">Motor</span>
           <span class="pillar-chip op">Operación</span>
           <span class="pillar-chip seg">Seguridad</span>
+          <span class="pillar-chip proceso">En proceso</span>
         </div>
       </div>
       <div class="headline-stat">
@@ -1094,7 +1149,21 @@ footer.site-footer{
       <div class="stop-label">Contexto del cliente</div>
       <h3>Telemetría Cummins gestionada con reportes estáticos</h3>
       <div class="stop-body">
-        <p>Cliente con una flota monitoreada bajo telemetría Cummins, que hasta este desarrollo gestionaba sus indicadores de flota apoyándose en <strong>Power BI combinado con Power Automate</strong>, una solución funcional, pero con límites claros de interactividad y de tiempo real.</p>
+        <p>Cliente con una flota monitoreada bajo telemetría Cummins, con límites claros de interactividad y de tiempo real en su forma de consultar los datos.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Telemetría</div>
+            <div class="stat-val" style="font-size:16px;">Cummins</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Herramienta previa</div>
+            <div class="stat-val" style="font-size:16px;">Power BI + Power Automate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Limitación principal</div>
+            <div class="stat-val" style="font-size:16px;">Sin interactividad en tiempo real</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1221,7 +1290,7 @@ footer.site-footer{
       <div class="stop-label">Conclusión / Impacto del caso</div>
       <div class="stop-body">
         <div class="conclusion-card">
-          <div class="conclusion-tag">Modernización tecnológica percibida</div>
+          <div class="conclusion-tag">Modernización tecnológica en proceso</div>
           <div class="subq">
             <div class="subq-q">¿Por qué consideramos que este es un caso de éxito?</div>
             <p>Porque lo consideramos una mejora continua: el propio cliente, sin que se lo pidiéramos, solicitó ampliar el alcance del servicio a todos sus indicadores restantes, la mejor señal de que el nuevo modelo generó valor real, no solo una mejora estética.</p>
