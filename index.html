@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casos de Éxito GAF · 2025–2026 · Navisaf</title>
+<title>Mejoras Continuas Daniel Torres · 2025–2026 · Navisaf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -74,10 +74,14 @@ a{color:var(--navy-700);}
   box-shadow:0 1px 0 rgba(255,255,255,.06);
 }
 .topbar-inner{
-  max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+  max-width:var(--maxw); margin:0 auto; padding:10px 24px;
   display:flex; align-items:center; gap:22px; flex-wrap:wrap;
 }
-.topbar img.logo{height:22px; width:auto;}
+.brand-chip{
+  background:#fff; border-radius:10px; padding:8px 16px;
+  display:flex; align-items:center;
+}
+.brand-chip img.logo{height:30px; width:auto; display:block;}
 .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap;}
 .tab-btn{
   appearance:none; border:1px solid transparent; background:transparent;
@@ -123,12 +127,14 @@ a{color:var(--navy-700);}
   display:flex; align-items:center; gap:26px; flex-wrap:wrap;
 }
 .hero-logo-box{
-  width:104px; height:104px; flex-shrink:0;
-  background:var(--navy-950); border-radius:16px;
+  width:168px; height:130px; flex-shrink:0;
+  background:#fff; border:1px solid var(--line); border-radius:16px;
   display:flex; align-items:center; justify-content:center;
   padding:16px;
 }
 .hero-logo-box img{max-width:100%; max-height:100%; object-fit:contain;}
+.hero-logo-box.is-photo{padding:0; overflow:hidden;}
+.hero-logo-box.is-photo img{width:100%; height:100%; object-fit:cover;}
 .case-hero-text{flex:1; min-width:240px;}
 .case-kicker{font-size:12.5px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;}
 .case-hero h2{font-size:clamp(24px,3vw,32px);}
@@ -147,30 +153,69 @@ a{color:var(--navy-700);}
 .headline-stat .lbl{font-size:12px; color:var(--muted); margin-top:6px; max-width:16ch;}
 
 /* ============================================================
-   ROUTE / SECTIONS
+   STEPPER (un punto a la vez, sin scroll largo)
 ============================================================ */
-.route{max-width:var(--maxw); margin:0 auto; padding:44px 24px 80px; position:relative;}
-.stop{
-  position:relative; padding-left:44px; padding-bottom:46px;
+.route{max-width:var(--maxw); margin:0 auto; padding:20px 24px 40px; position:relative;}
+
+.stepper{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  position:relative; margin:0 0 28px; padding:0 6px;
 }
-.stop:last-child{padding-bottom:0;}
-.stop::before{ /* rail */
-  content:''; position:absolute; left:11px; top:26px; bottom:-4px; width:2px;
-  background:var(--line);
+.stepper::before{
+  content:''; position:absolute; left:18px; right:18px; top:17px; height:2px; background:var(--line); z-index:0;
 }
-.stop:last-child::before{display:none;}
-.stop-node{
-  position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%;
-  background:#fff; border:2px solid var(--navy-800);
+.stepper-fill{
+  position:absolute; left:18px; top:17px; height:2px; background:var(--navy-800); z-index:1;
+  width:0%; transition:width .2s ease;
+}
+.step-item{
+  position:relative; z-index:2; background:transparent; border:none; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:7px; padding:0; flex:1;
+}
+.step-circle{
+  width:34px; height:34px; border-radius:50%; background:var(--paper);
+  border:2px solid var(--line); color:var(--muted);
   display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+  transition:border-color .15s, color .15s, background .15s;
 }
-.stop-node::after{content:''; width:6px; height:6px; border-radius:50%; background:var(--navy-800);}
+.step-item.done .step-circle{background:var(--navy-800); border-color:var(--navy-800); color:#fff;}
+.step-item.active .step-circle{border-color:var(--navy-800); color:var(--navy-800); background:#fff; box-shadow:0 0 0 4px var(--mist);}
+.step-name{
+  font-size:10.5px; color:var(--muted); text-align:center; line-height:1.25; max-width:76px;
+  display:none;
+}
+.step-item.active .step-name{color:var(--navy-800); font-weight:600;}
+@media (min-width:720px){ .step-name{display:block;} }
+
+.stop{
+  position:relative; display:none;
+  background:var(--card); border:1px solid var(--line); border-radius:20px;
+  padding:32px clamp(20px,4vw,44px);
+  min-height:min(52vh, 480px);
+}
+.stop.active{display:flex; flex-direction:column; justify-content:center;}
 .stop-label{
   font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px;
-  color:var(--navy-700); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;
+  color:var(--navy-700); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px;
 }
-.stop h3{font-size:20px; margin-bottom:14px;}
+.stop h3{font-size:clamp(19px,2.4vw,23px); margin-bottom:16px;}
 .stop-body{color:var(--ink); font-size:15.5px;}
+
+.step-nav-btns{
+  display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:22px;
+}
+.step-btn{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+  border:1.5px solid var(--line); background:#fff; color:var(--navy-800);
+  padding:10px 18px; border-radius:9px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  transition:border-color .15s, background .15s;
+}
+.step-btn:hover{border-color:var(--navy-800);}
+.step-btn:disabled{opacity:.35; cursor:default; pointer-events:none;}
+.step-btn.primary{background:var(--navy-800); border-color:var(--navy-800); color:#fff;}
+.step-btn.primary:hover{background:var(--navy-950);}
+.step-pos{font-family:'Space Grotesk',sans-serif; font-size:12.5px; color:var(--muted);}
 
 .subq{margin-bottom:18px;}
 .subq:last-child{margin-bottom:0;}
@@ -214,6 +259,40 @@ a{color:var(--navy-700);}
 .tool-head h4{font-size:16px; font-family:'Space Grotesk',sans-serif;}
 .tool-head p{color:var(--muted); font-size:14.5px; margin-top:6px;}
 .tool-media{position:relative; background:var(--mist); border-top:1px solid var(--line);}
+.tool-media img{cursor:zoom-in;}
+.zoom-hint{
+  position:absolute; bottom:12px; right:12px; z-index:5;
+  background:rgba(8,29,52,.82); color:#EAF6FC;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:11px;
+  padding:6px 12px; border-radius:20px; display:flex; align-items:center; gap:6px;
+  pointer-events:none; opacity:0; transition:opacity .15s;
+}
+.tool-media:hover .zoom-hint{opacity:1;}
+.zoom-hint svg{width:12px; height:12px; flex-shrink:0;}
+
+/* ---- Lightbox ---- */
+.lightbox-overlay{
+  position:fixed; inset:0; z-index:1000; background:rgba(6,17,32,.92);
+  display:none; align-items:center; justify-content:center; padding:min(6vh,60px) 24px;
+  backdrop-filter:blur(2px);
+}
+.lightbox-overlay.open{display:flex;}
+.lightbox-overlay img{
+  max-width:min(94vw,1400px); max-height:88vh; width:auto; height:auto;
+  border-radius:10px; box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.lightbox-close{
+  position:fixed; top:20px; right:24px; z-index:1001;
+  width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.08); color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.lightbox-close:hover{background:rgba(255,255,255,.18);}
+.lightbox-close svg{width:18px; height:18px;}
+.lightbox-caption{
+  position:fixed; bottom:22px; left:0; right:0; text-align:center;
+  color:#CFE0EF; font-family:'Space Grotesk',sans-serif; font-size:13px; z-index:1001;
+}
 .tool-media img{width:100%; height:auto; display:block;}
 .confidential-badge{
   position:absolute; top:12px; right:12px; z-index:5;
@@ -293,8 +372,9 @@ footer.site-footer{
 @media (max-width:640px){
   .case-hero-inner{flex-direction:column; align-items:flex-start;}
   .headline-stat{border-left:none; padding-left:0; text-align:left; border-top:1px solid var(--line); padding-top:14px; width:100%;}
-  .stop{padding-left:36px;}
-  .route{padding-top:32px;}
+  .stepper{padding:0; overflow-x:auto; justify-content:flex-start; gap:20px;}
+  .stepper::before, .stepper-fill{left:17px; right:auto; width:calc(100% - 34px);}
+  .step-item{flex:0 0 auto; width:34px;}
 }
 </style>
 </head>
@@ -305,8 +385,8 @@ footer.site-footer{
 ============================================================ -->
 <div class="topbar">
   <div class="topbar-inner">
-    <img class="logo" src="assets/navisaf-logo-blanco.png" alt="Navisaf">
-    <div class="tabs" role="tablist" aria-label="Casos de éxito">
+    <div class="brand-chip"><img class="logo" src="assets/navisaf-logo-blanco.png" alt="Navisaf"></div>
+    <div class="tabs" role="tablist" aria-label="Mejoras continuas">
       <button class="tab-btn active" data-case="ardepe" role="tab" aria-selected="true">ARDEPE</button>
       <button class="tab-btn" data-case="raciemsa" role="tab" aria-selected="false">RACIEMSA</button>
       <button class="tab-btn" data-case="cummins" role="tab" aria-selected="false">CUMMINS · PSA</button>
@@ -319,7 +399,7 @@ footer.site-footer{
 ============================================================ -->
 <div class="cover">
   <div class="cover-inner">
-    <div class="cover-eyebrow"><span class="cover-node"></span>CASOS DE ÉXITO GAF · 2025–2026</div>
+    <div class="cover-eyebrow"><span class="cover-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
     <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
     <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
   </div>
@@ -334,7 +414,7 @@ footer.site-footer{
     <div class="case-hero-inner">
       <div class="hero-logo-box"><img src="assets/ardepe/hero.png" alt="Logo ARDEPE"></div>
       <div class="case-hero-text">
-        <div class="case-kicker">Caso de éxito · Retención de cliente</div>
+        <div class="case-kicker">Mejora continua · Retención de cliente</div>
         <h2>ARDEPE</h2>
         <div class="pillar-row">
           <span class="pillar-chip mant">Mantenimiento</span>
@@ -343,17 +423,18 @@ footer.site-footer{
         </div>
       </div>
       <div class="headline-stat">
-        <div class="num">1.5 días → 2 min</div>
-        <div class="lbl">en costos de combustible y kilometraje</div>
+        <div class="num">116</div>
+        <div class="lbl">unidades activas monitoreadas</div>
       </div>
     </div>
   </div>
 
   <div class="route">
 
+    <div class="stepper" data-stepper="ardepe"></div>
+
     <!-- 1. Contexto -->
-    <div class="stop">
-      <div class="stop-node"></div>
+    <div class="stop active">
       <div class="stop-label">Contexto del cliente</div>
       <h3>Una flota dividida en dos operaciones, con datos que no se traducían en gestión</h3>
       <div class="stop-body">
@@ -363,7 +444,6 @@ footer.site-footer{
 
     <!-- 2. Necesidad -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Necesidad, problemática o expectativa</div>
       <h3>Procesos manuales, desgaste operativo y una relación comercial en riesgo</h3>
       <div class="stop-body">
@@ -380,7 +460,6 @@ footer.site-footer{
 
     <!-- 3. Pilar -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Pilar gestionado</div>
       <h3>Mantenimiento, Operación y Seguridad</h3>
       <div class="stop-body">
@@ -390,7 +469,6 @@ footer.site-footer{
 
     <!-- 4. Línea base -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Línea base</div>
       <h3>El punto de partida, antes de las herramientas</h3>
       <div class="stop-body">
@@ -417,7 +495,6 @@ footer.site-footer{
 
     <!-- 5. Objetivos -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Objetivos</div>
       <h3>Qué se buscaba lograr</h3>
       <div class="stop-body">
@@ -434,7 +511,6 @@ footer.site-footer{
 
     <!-- 6. Estrategia -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Cuatro herramientas a medida, más acompañamiento directo en campo</h3>
       <div class="stop-body">
@@ -453,11 +529,8 @@ footer.site-footer{
             </div>
             <img data-tool="km" data-idx="0" src="assets/ardepe/control-km-1.png" alt="Control de Kilómetros — vista Detalle">
           </div>
-          <div class="tool-dots" data-tool-dots="km">
-            <button class="tool-dot active" data-tool="km" data-idx="0"></button>
-            <button class="tool-dot" data-tool="km" data-idx="1"></button>
-          </div>
-          <div class="tool-caption" data-tool-caption="km">Vista Detalle</div>
+          <div class="tool-dots" data-tool-dots="km"></div>
+          <div class="tool-caption" data-tool-caption="km">Vista 1</div>
         </div>
 
         <!-- Tool: Control Taller -->
@@ -469,11 +542,8 @@ footer.site-footer{
           <div class="tool-media">
             <img data-tool="taller" data-idx="0" src="assets/ardepe/control-taller-1.png" alt="Control de Ingreso a Taller — módulo Taller">
           </div>
-          <div class="tool-dots" data-tool-dots="taller">
-            <button class="tool-dot active" data-tool="taller" data-idx="0"></button>
-            <button class="tool-dot" data-tool="taller" data-idx="1"></button>
-          </div>
-          <div class="tool-caption" data-tool-caption="taller">Módulo Taller</div>
+          <div class="tool-dots" data-tool-dots="taller"></div>
+          <div class="tool-caption" data-tool-caption="taller">Vista 1</div>
         </div>
 
         <!-- Tool: Lead Time -->
@@ -485,11 +555,8 @@ footer.site-footer{
           <div class="tool-media">
             <img data-tool="leadtime" data-idx="0" src="assets/ardepe/lead-time-1.png" alt="Lead Time por CD — comportamiento de viajes">
           </div>
-          <div class="tool-dots" data-tool-dots="leadtime">
-            <button class="tool-dot active" data-tool="leadtime" data-idx="0"></button>
-            <button class="tool-dot" data-tool="leadtime" data-idx="1"></button>
-          </div>
-          <div class="tool-caption" data-tool-caption="leadtime">Comportamiento de viajes</div>
+          <div class="tool-dots" data-tool-dots="leadtime"></div>
+          <div class="tool-caption" data-tool-caption="leadtime">Vista 1</div>
         </div>
 
         <!-- Tool: Horas de Conduccion -->
@@ -501,11 +568,8 @@ footer.site-footer{
           <div class="tool-media">
             <img data-tool="horas" data-idx="0" src="assets/ardepe/horas-conduccion-1.png" alt="Control de Horas de Conducción — vista general">
           </div>
-          <div class="tool-dots" data-tool-dots="horas">
-            <button class="tool-dot active" data-tool="horas" data-idx="0"></button>
-            <button class="tool-dot" data-tool="horas" data-idx="1"></button>
-          </div>
-          <div class="tool-caption" data-tool-caption="horas">Vista general</div>
+          <div class="tool-dots" data-tool-dots="horas"></div>
+          <div class="tool-caption" data-tool-caption="horas">Vista 1</div>
         </div>
 
         <div class="confidential-note">
@@ -518,7 +582,7 @@ footer.site-footer{
         <div class="tool-block">
           <div class="tool-head">
             <h4>Prueba de ruta — validación de velocidad y acelerómetro</h4>
-            <p>Misma prueba realizada en dos unidades y conductores distintos, como evidencia cruzada.</p>
+            <p>Prueba realizada en conjunto con el área de SSOMA de Operaciones, con el objetivo de definir los parámetros de acelerómetro (frenadas, aceleraciones y giros) y de velocidad, ajustados a la realidad de la ruta y el terreno de la operación. Misma prueba registrada en dos unidades y conductores distintos, como evidencia cruzada.</p>
           </div>
           <div class="video-row">
             <div class="video-box">
@@ -537,7 +601,6 @@ footer.site-footer{
 
     <!-- 7. Resultados -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Resultados</div>
       <h3>La evolución frente a la línea base</h3>
       <div class="stop-body">
@@ -581,7 +644,6 @@ footer.site-footer{
 
     <!-- 8. Conclusión -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Conclusión / Impacto del caso</div>
       <div class="stop-body">
         <div class="conclusion-card">
@@ -589,6 +651,12 @@ footer.site-footer{
           <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Fue esa combinación —herramientas que resuelven el trabajo diario, más acompañamiento real con los conductores— lo que revirtió la intención de salida del cliente y consolidó la relación comercial.</p>
         </div>
       </div>
+    </div>
+
+    <div class="step-nav-btns" data-stepnav="ardepe">
+      <button class="step-btn" data-step-prev="ardepe">← Anterior</button>
+      <span class="step-pos" data-step-pos="ardepe">1 / 8</span>
+      <button class="step-btn primary" data-step-next="ardepe">Siguiente →</button>
     </div>
 
   </div>
@@ -607,7 +675,7 @@ footer.site-footer{
     <div class="case-hero-inner">
       <div class="hero-logo-box"><img src="assets/raciemsa/hero.png" alt="Logo RACIEMSA"></div>
       <div class="case-hero-text">
-        <div class="case-kicker">Caso de éxito · Diferenciación comercial</div>
+        <div class="case-kicker">Mejora continua · Diferenciación comercial</div>
         <h2>RACIEMSA</h2>
         <div class="pillar-row">
           <span class="pillar-chip seg">Seguridad</span>
@@ -616,17 +684,18 @@ footer.site-footer{
         </div>
       </div>
       <div class="headline-stat">
-        <div class="num">1 – 2 / mes</div>
-        <div class="lbl">voladuras de neumático, con casos ya prevenidos</div>
+        <div class="num">82</div>
+        <div class="lbl">unidades activas monitoreadas</div>
       </div>
     </div>
   </div>
 
   <div class="route">
 
+    <div class="stepper" data-stepper="raciemsa"></div>
+
     <!-- 1. Contexto -->
-    <div class="stop">
-      <div class="stop-node"></div>
+    <div class="stop active">
       <div class="stop-label">Contexto del cliente</div>
       <h3>Una flota con tres tipos de combustible, y tres estructuras de costo distintas</h3>
       <div class="stop-body">
@@ -636,7 +705,6 @@ footer.site-footer{
 
     <!-- 2. Necesidad -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Necesidad, problemática o expectativa</div>
       <h3>Ciego frente a la presión de sus neumáticos, y sin autonomía para detectar sustracciones</h3>
       <div class="stop-body">
@@ -653,7 +721,6 @@ footer.site-footer{
 
     <!-- 3. Pilar -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Pilar gestionado</div>
       <h3>Seguridad como eje principal, con Mantenimiento y Operación como complementarios</h3>
       <div class="stop-body">
@@ -663,7 +730,6 @@ footer.site-footer{
 
     <!-- 4. Línea base -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Línea base</div>
       <h3>El punto de partida, entre 2025 y mayo de 2026</h3>
       <div class="stop-body">
@@ -687,7 +753,6 @@ footer.site-footer{
 
     <!-- 5. Objetivos -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Objetivos</div>
       <h3>Qué se buscaba lograr</h3>
       <div class="stop-body">
@@ -703,7 +768,6 @@ footer.site-footer{
 
     <!-- 6. Estrategia -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Cinco herramientas a medida, apuntando directo a cada falencia</h3>
       <div class="stop-body">
@@ -745,10 +809,7 @@ footer.site-footer{
           <div class="tool-media">
             <img data-tool="analizador" data-idx="0" src="assets/raciemsa/analizador-combustible-1.png" alt="Analizador de combustible — vista 1">
           </div>
-          <div class="tool-dots" data-tool-dots="analizador">
-            <button class="tool-dot active" data-tool="analizador" data-idx="0"></button>
-            <button class="tool-dot" data-tool="analizador" data-idx="1"></button>
-          </div>
+          <div class="tool-dots" data-tool-dots="analizador"></div>
           <div class="tool-caption" data-tool-caption="analizador">Vista 1</div>
         </div>
 
@@ -773,7 +834,6 @@ footer.site-footer{
 
     <!-- 7. Resultados -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Resultados</div>
       <h3>La evolución frente a la línea base</h3>
       <div class="stop-body">
@@ -810,7 +870,6 @@ footer.site-footer{
 
     <!-- 8. Conclusión -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Conclusión / Impacto del caso</div>
       <div class="stop-body">
         <div class="conclusion-card">
@@ -818,6 +877,12 @@ footer.site-footer{
           <p>RACIEMSA aún no es cliente contractual de Navisaf, pero las herramientas desarrolladas están resolviendo, con datos concretos y resultados medibles, problemas que le costaban dinero y seguridad operativa — y que su proveedor actual no atendía. Ese es exactamente el efecto que se buscaba: que el cliente sienta la necesidad de Navisaf y vea con claridad qué lo diferencia de cualquier otra opción del mercado.</p>
         </div>
       </div>
+    </div>
+
+    <div class="step-nav-btns" data-stepnav="raciemsa">
+      <button class="step-btn" data-step-prev="raciemsa">← Anterior</button>
+      <span class="step-pos" data-step-pos="raciemsa">1 / 8</span>
+      <button class="step-btn primary" data-step-next="raciemsa">Siguiente →</button>
     </div>
 
   </div>
@@ -834,9 +899,9 @@ footer.site-footer{
 
   <div class="case-hero">
     <div class="case-hero-inner">
-      <div class="hero-logo-box"><img src="assets/cummins/hero.png" alt="Logo Cummins / PSA"></div>
+      <div class="hero-logo-box is-photo"><img src="assets/cummins/hero.png" alt="Cummins"></div>
       <div class="case-hero-text">
-        <div class="case-kicker">Caso de éxito · Modernización tecnológica</div>
+        <div class="case-kicker">Mejora continua · Modernización tecnológica</div>
         <h2>CUMMINS · PSA</h2>
         <div class="pillar-row">
           <span class="pillar-chip mant">Motor</span>
@@ -845,17 +910,18 @@ footer.site-footer{
         </div>
       </div>
       <div class="headline-stat">
-        <div class="num">100%</div>
-        <div class="lbl">de indicadores solicitados para migración</div>
+        <div class="num">147</div>
+        <div class="lbl">unidades activas monitoreadas</div>
       </div>
     </div>
   </div>
 
   <div class="route">
 
+    <div class="stepper" data-stepper="cummins"></div>
+
     <!-- 1. Contexto -->
-    <div class="stop">
-      <div class="stop-node"></div>
+    <div class="stop active">
       <div class="stop-label">Contexto del cliente</div>
       <h3>Telemetría Cummins gestionada con reportes estáticos</h3>
       <div class="stop-body">
@@ -865,7 +931,6 @@ footer.site-footer{
 
     <!-- 2. Necesidad -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Necesidad, problemática o expectativa</div>
       <h3>Indicadores rígidos, sin exploración interactiva</h3>
       <div class="stop-body">
@@ -882,7 +947,6 @@ footer.site-footer{
 
     <!-- 3. Pilar -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Pilar gestionado</div>
       <h3>Motor, Operación y Seguridad, en un dashboard integral</h3>
       <div class="stop-body">
@@ -892,7 +956,6 @@ footer.site-footer{
 
     <!-- 4. Línea base -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Línea base</div>
       <h3>El punto de partida</h3>
       <div class="stop-body">
@@ -915,7 +978,6 @@ footer.site-footer{
 
     <!-- 5. Objetivos -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Objetivos</div>
       <h3>Qué se buscaba lograr</h3>
       <div class="stop-body">
@@ -929,7 +991,6 @@ footer.site-footer{
 
     <!-- 6. Estrategia -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Un sistema propio, construido desde cero, vía API</h3>
       <div class="stop-body">
@@ -959,7 +1020,6 @@ footer.site-footer{
 
     <!-- 7. Resultados -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Resultados</div>
       <h3>Del reporte estático a la demanda activa del cliente</h3>
       <div class="stop-body">
@@ -985,7 +1045,6 @@ footer.site-footer{
 
     <!-- 8. Conclusión -->
     <div class="stop">
-      <div class="stop-node"></div>
       <div class="stop-label">Conclusión / Impacto del caso</div>
       <div class="stop-body">
         <div class="conclusion-card">
@@ -995,6 +1054,12 @@ footer.site-footer{
       </div>
     </div>
 
+    <div class="step-nav-btns" data-stepnav="cummins">
+      <button class="step-btn" data-step-prev="cummins">← Anterior</button>
+      <span class="step-pos" data-step-pos="cummins">1 / 8</span>
+      <button class="step-btn primary" data-step-next="cummins">Siguiente →</button>
+    </div>
+
   </div>
 
   <div class="case-nav">
@@ -1002,7 +1067,15 @@ footer.site-footer{
   </div>
 </section>
 
-<footer class="site-footer">Casos de Éxito GAF · 2025–2026 · Navisaf</footer>
+<footer class="site-footer">Mejoras Continuas Daniel Torres · 2025–2026 · Navisaf</footer>
+
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen ampliada">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <script>
 (function(){
@@ -1030,34 +1103,136 @@ footer.site-footer{
     btn.addEventListener('click', function(){ showCase(btn.dataset.goto); });
   });
 
-  // ---- Carrusel de 2 vistas por herramienta ----
+  // ---- Carrusel de vistas por herramienta ----
   var toolFiles = {
     km:        ['assets/ardepe/control-km-1.png', 'assets/ardepe/control-km-2.png'],
-    taller:    ['assets/ardepe/control-taller-1.png', 'assets/ardepe/control-taller-2.png'],
-    leadtime:  ['assets/ardepe/lead-time-1.png', 'assets/ardepe/lead-time-2.png'],
+    taller:    ['assets/ardepe/control-taller-1.png', 'assets/ardepe/control-taller-2.png', 'assets/ardepe/control-taller-3.png'],
+    leadtime:  ['assets/ardepe/lead-time-1.png', 'assets/ardepe/lead-time-2.png', 'assets/ardepe/lead-time-3.png'],
     horas:     ['assets/ardepe/horas-conduccion-1.png', 'assets/ardepe/horas-conduccion-2.png'],
     analizador:['assets/raciemsa/analizador-combustible-1.png', 'assets/raciemsa/analizador-combustible-2.png']
   };
-  var toolCaptions = {
-    km:        ['Vista Detalle', 'Vista Resumen'],
-    taller:    ['Módulo Taller', 'Módulo Neumático'],
-    leadtime:  ['Comportamiento de viajes', 'Tiempo en zonas y tendencias'],
-    horas:     ['Vista general', 'Detalle por conductor'],
-    analizador:['Vista 1', 'Vista 2']
-  };
 
-  document.querySelectorAll('.tool-dot').forEach(function(dot){
-    dot.addEventListener('click', function(){
-      var tool = dot.dataset.tool, idx = parseInt(dot.dataset.idx, 10);
-      var img = document.querySelector('img[data-tool="' + tool + '"]');
-      if(img && toolFiles[tool]) img.src = toolFiles[tool][idx];
-      var cap = document.querySelector('[data-tool-caption="' + tool + '"]');
-      if(cap && toolCaptions[tool]) cap.textContent = toolCaptions[tool][idx];
-      document.querySelectorAll('.tool-dot[data-tool="' + tool + '"]').forEach(function(d){
-        d.classList.toggle('active', d === dot);
-      });
+  function setTool(tool, idx){
+    var img = document.querySelector('img[data-tool="' + tool + '"]');
+    if(img && toolFiles[tool]) img.src = toolFiles[tool][idx];
+    var cap = document.querySelector('[data-tool-caption="' + tool + '"]');
+    if(cap) cap.textContent = 'Vista ' + (idx + 1);
+    document.querySelectorAll('.tool-dot[data-tool="' + tool + '"]').forEach(function(d){
+      d.classList.toggle('active', parseInt(d.dataset.idx,10) === idx);
+    });
+  }
+
+  Object.keys(toolFiles).forEach(function(tool){
+    var host = document.querySelector('[data-tool-dots="' + tool + '"]');
+    if(!host) return;
+    if(toolFiles[tool].length <= 1){ host.style.display = 'none'; return; }
+    host.innerHTML = '';
+    toolFiles[tool].forEach(function(_, idx){
+      var dot = document.createElement('button');
+      dot.className = 'tool-dot' + (idx === 0 ? ' active' : '');
+      dot.dataset.tool = tool;
+      dot.dataset.idx = idx;
+      dot.addEventListener('click', function(){ setTool(tool, idx); });
+      host.appendChild(dot);
     });
   });
+
+  // ---- Stepper: un punto de gerencia a la vez, sin scroll largo ----
+  var STEP_LABELS = ['Contexto','Necesidad','Pilar','Línea base','Objetivos','Estrategia','Resultados','Conclusión'];
+  var stepState = {}; // caseId -> índice actual (0-based)
+
+  function buildStepper(caseId){
+    var host = document.querySelector('[data-stepper="' + caseId + '"]');
+    if(!host) return;
+    host.innerHTML = '<div class="stepper-fill" data-fill="' + caseId + '"></div>';
+    STEP_LABELS.forEach(function(label, i){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'step-item' + (i === 0 ? ' active' : '');
+      btn.dataset.stepGo = caseId;
+      btn.dataset.stepIdx = i;
+      btn.innerHTML = '<span class="step-circle">' + (i+1) + '</span><span class="step-name">' + label + '</span>';
+      btn.addEventListener('click', function(){ goToStep(caseId, i); });
+      host.appendChild(btn);
+    });
+  }
+
+  function goToStep(caseId, idx){
+    var section = document.getElementById('case-' + caseId);
+    if(!section) return;
+    var stops = section.querySelectorAll('.stop');
+    idx = Math.max(0, Math.min(idx, stops.length - 1));
+    stepState[caseId] = idx;
+
+    stops.forEach(function(s, i){ s.classList.toggle('active', i === idx); });
+
+    var host = document.querySelector('[data-stepper="' + caseId + '"]');
+    if(host){
+      host.querySelectorAll('.step-item').forEach(function(btn, i){
+        btn.classList.toggle('active', i === idx);
+        btn.classList.toggle('done', i < idx);
+      });
+      var fill = host.querySelector('[data-fill="' + caseId + '"]');
+      if(fill) fill.style.width = (stops.length > 1 ? (idx / (stops.length - 1)) * 100 : 0) + '%';
+    }
+
+    var prevBtn = document.querySelector('[data-step-prev="' + caseId + '"]');
+    var nextBtn = document.querySelector('[data-step-next="' + caseId + '"]');
+    if(prevBtn) prevBtn.disabled = idx === 0;
+    if(nextBtn) nextBtn.disabled = idx === stops.length - 1;
+
+    var pos = document.querySelector('[data-step-pos="' + caseId + '"]');
+    if(pos) pos.textContent = (idx + 1) + ' / ' + stops.length;
+
+    var route = section.querySelector('.route');
+    if(route) route.scrollIntoView({block:'start', behavior:'auto'});
+  }
+
+  ['ardepe','raciemsa','cummins'].forEach(function(caseId){
+    buildStepper(caseId);
+    stepState[caseId] = 0;
+    goToStep(caseId, 0);
+
+    var prevBtn = document.querySelector('[data-step-prev="' + caseId + '"]');
+    var nextBtn = document.querySelector('[data-step-next="' + caseId + '"]');
+    if(prevBtn) prevBtn.addEventListener('click', function(){ goToStep(caseId, (stepState[caseId]||0) - 1); });
+    if(nextBtn) nextBtn.addEventListener('click', function(){ goToStep(caseId, (stepState[caseId]||0) + 1); });
+  });
+
+  // ---- Lightbox: ampliar cualquier captura de pantalla ----
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lastFocused = null;
+
+  function openLightbox(img){
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || '';
+    lightboxCaption.textContent = img.alt || '';
+    lastFocused = document.activeElement;
+    lightbox.classList.add('open');
+    document.getElementById('lightboxClose').focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.tool-media').forEach(function(media){
+    var hint = document.createElement('div');
+    hint.className = 'zoom-hint';
+    hint.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar';
+    media.appendChild(hint);
+    var img = media.querySelector('img');
+    if(img) img.addEventListener('click', function(){ openLightbox(img); });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
 
 })();
 </script>
