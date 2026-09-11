@@ -302,6 +302,19 @@ a{color:var(--navy-700);}
 
 .need-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px;}
 .need-card{background:var(--mist); border-radius:var(--radius); padding:15px 17px; border-left:3px solid var(--navy-700);}
+
+.baseline-card{
+  background:var(--mist); border-radius:var(--radius); padding:16px 18px;
+  border-left:4px solid var(--line);
+}
+.baseline-card.pilar-mant{border-left-color:var(--mant);}
+.baseline-card.pilar-op{border-left-color:var(--op);}
+.baseline-card.pilar-seg{border-left-color:var(--seg);}
+.baseline-lbl{font-size:12.5px; color:var(--muted); margin-bottom:8px;}
+.baseline-val{
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px;
+  color:#94A0B2; text-decoration:line-through; text-decoration-color:#C7CFDB;
+}
 .need-card .need-title{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; color:var(--navy-950); margin-bottom:6px;}
 .need-card p{font-size:13.5px; color:var(--muted); margin:0;}
 
@@ -639,21 +652,21 @@ footer.site-footer{
       <h3>El punto de partida, antes de las herramientas</h3>
       <div class="stop-body">
         <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-lbl">Mantenimiento: reporte de costos</div>
-            <div class="stat-val">1.5 días</div>
+          <div class="baseline-card pilar-mant">
+            <div class="baseline-lbl">Mantenimiento: reporte de costos</div>
+            <div class="baseline-val">1.5 días</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Operación: validación completa</div>
-            <div class="stat-val">6 horas</div>
+          <div class="baseline-card pilar-op">
+            <div class="baseline-lbl">Operación: validación completa</div>
+            <div class="baseline-val">6 horas</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Seguridad: eventos de acelerómetro / mes</div>
-            <div class="stat-val">200 – 500</div>
+          <div class="baseline-card pilar-seg">
+            <div class="baseline-lbl">Seguridad: eventos de acelerómetro / mes</div>
+            <div class="baseline-val">200 – 500</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Seguridad: umbral de velocidad</div>
-            <div class="stat-val">Sin validar</div>
+          <div class="baseline-card pilar-seg">
+            <div class="baseline-lbl">Seguridad: umbral de velocidad</div>
+            <div class="baseline-val">Sin validar</div>
           </div>
         </div>
       </div>
@@ -895,7 +908,7 @@ footer.site-footer{
     <!-- 2. Necesidad -->
     <div class="stop">
       <div class="stop-label">Necesidad, problemática o expectativa</div>
-      <h3>Cuatro frentes sin resolver, no solo uno</h3>
+      <h3>4 necesidades sin resolver</h3>
       <div class="stop-body">
         <div class="subq">
           <div class="subq-q">¿Qué situación identificó el cliente?</div>
@@ -915,13 +928,13 @@ footer.site-footer{
             </div>
             <div class="need-card">
               <div class="need-title">Costo-kilómetro</div>
-              <p>Sin un cálculo claro ni desagregado por tipo de combustible (Diesel, GNV, GNL).</p>
+              <p>Sin un cálculo claro, ni separado por tipo de combustible (Diesel, GNV, GNL).</p>
             </div>
           </div>
         </div>
         <div class="subq">
           <div class="subq-q">¿Cuál era la necesidad o el reto a resolver?</div>
-          <p>Resolver los cuatro frentes a la vez: ampliar el TPMS junto con el dealer para gestionar la presión en tiempo real, dar visibilidad de combustible, habilitar diagnóstico ágil cruzando variables, y entregar un costo-kilómetro diario y desagregado.</p>
+          <p>Resolver los cuatro frentes a la vez: ampliar el TPMS junto con el dealer para gestionar la presión en tiempo real, dar visibilidad de combustible, habilitar diagnóstico ágil cruzando variables, y entregar un costo-kilómetro diario, separado por tipo de combustible.</p>
         </div>
       </div>
     </div>
@@ -941,17 +954,17 @@ footer.site-footer{
       <h3>El punto de partida, entre 2025 y mayo de 2026</h3>
       <div class="stop-body">
         <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-lbl">Voladuras de neumático por mes</div>
-            <div class="stat-val">Varias al mes</div>
+          <div class="baseline-card pilar-seg">
+            <div class="baseline-lbl">Voladuras de neumático por mes</div>
+            <div class="baseline-val">Varias al mes</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Visibilidad de presión TPMS</div>
-            <div class="stat-val">Solo vía dealer</div>
+          <div class="baseline-card pilar-seg">
+            <div class="baseline-lbl">Visibilidad de presión TPMS</div>
+            <div class="baseline-val">Solo vía dealer</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Detección de sustracción de combustible</div>
-            <div class="stat-val">Sin autonomía</div>
+          <div class="baseline-card pilar-mant">
+            <div class="baseline-lbl">Detección de sustracción de combustible</div>
+            <div class="baseline-val">Sin autonomía</div>
           </div>
         </div>
         <p style="margin-top:16px;">Este número elevado y recurrente se sostenía por la falta de visibilidad propia sobre la presión de las llantas: el cliente dependía enteramente del TPMS de su dealer, sin poder cruzar esa información con su propia data operativa ni actuar de forma preventiva.</p>
@@ -967,7 +980,7 @@ footer.site-footer{
           <li>Reducir significativamente la frecuencia de voladuras de neumático mediante monitoreo de presión propio, en tiempo real y con alertas.</li>
           <li>Dar al cliente control y visibilidad total de sus abastecimientos de combustible.</li>
           <li>Habilitar un diagnóstico ágil de posibles sustracciones de combustible, cruzando variables que el sistema base no correlacionaba.</li>
-          <li>Entregar costo-kilómetro diario, desagregado por tipo de combustible (Diesel, GNV, GNL).</li>
+          <li>Entregar costo-kilómetro diario, separado por tipo de combustible (Diesel, GNV, GNL).</li>
           <li>Diferenciar la propuesta de Navisaf frente a otros proveedores, de forma que el cliente vea un motivo concreto para firmar contrato.</li>
         </ul>
       </div>
@@ -1059,15 +1072,7 @@ footer.site-footer{
               <span class="compare-arrow">→</span>
               <span class="compare-val after">1 – 2</span>
             </div>
-            <div class="compare-note">Con casos puntuales ya prevenidos gracias a la alerta a tiempo de baja presión.</div>
-          </div>
-          <div class="compare-card">
-            <div class="compare-title">VISIBILIDAD DE TPMS</div>
-            <div class="compare-flow">
-              <span class="compare-val before">Solo dealer</span>
-              <span class="compare-arrow">→</span>
-              <span class="compare-val after">Gestión propia</span>
-            </div>
+            <div class="compare-note">Ahora con gestión propia del TPMS (antes solo la tenía el dealer), la baja presión se detecta de forma temprana, antes de que se convierta en un incidente.</div>
           </div>
           <div class="compare-card">
             <div class="compare-title">DIAGNÓSTICO DE SUSTRACCIÓN</div>
@@ -1077,6 +1082,15 @@ footer.site-footer{
               <span class="compare-val after">Ágil y con datos cruzados</span>
             </div>
             <div class="compare-note">Con el analizador ya se identificaron casos de posible sustracción en unidades que repostaban en grifos aledaños (detalle reservado por confidencialidad del cliente).</div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">COSTO-KILÓMETRO</div>
+            <div class="compare-flow">
+              <span class="compare-val before">Sin cálculo claro</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">Por combustible y operación</span>
+            </div>
+            <div class="compare-note">Separado por tipo de combustible (Diesel, GNV, GNL) y por tipo de operación, con foco directo en la rentabilidad de cada unidad.</div>
           </div>
         </div>
         <p style="margin-top:18px;">El cliente dejó de depender exclusivamente del TPMS de su dealer y ahora gestiona esta información de forma autónoma, con datos cruzados en tiempo real para hacer diagnósticos más rápidos y sustentados.</p>
@@ -1095,11 +1109,11 @@ footer.site-footer{
           </div>
           <div class="subq">
             <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
-            <p>RACIEMSA dejó de depender únicamente del TPMS de su dealer sin visibilidad propia, y hoy gestiona presión de neumáticos, combustible y costo-kilómetro por tipo de combustible desde una sola plataforma, sin haber firmado todavía ningún contrato con Navisaf.</p>
+            <p>Hoy RACIEMSA gestiona, desde una sola plataforma, la presión de sus neumáticos, su combustible y su costo-kilómetro por tipo de combustible: tres frentes que antes dependían de terceros o no existían. Todo esto sin haber firmado todavía contrato con Navisaf.</p>
           </div>
           <div class="subq">
             <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
-            <p>Identificar primero el problema más costoso para el cliente (en este caso, las voladuras) y resolverlo con datos medibles abre la puerta para ampliar el alcance. Y trabajar en conjunto con terceros ya instalados (el dealer del TPMS) en vez de reemplazarlos, suma en lugar de generar fricción.</p>
+            <p>Resolver varios frentes del cliente a la vez (seguridad, combustible, costos), cada uno con datos medibles, abre la puerta para ampliar el alcance más que resolver uno solo. También ayuda trabajar en conjunto con terceros ya instalados, como el dealer del TPMS, en vez de reemplazarlos: suma en lugar de generar fricción.</p>
           </div>
         </div>
       </div>
@@ -1198,17 +1212,17 @@ footer.site-footer{
       <h3>El punto de partida</h3>
       <div class="stop-body">
         <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-lbl">Herramienta</div>
-            <div class="stat-val">Power BI + Power Automate</div>
+          <div class="baseline-card pilar-op">
+            <div class="baseline-lbl">Herramienta</div>
+            <div class="baseline-val">Power BI + Power Automate</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Actualización de datos</div>
-            <div class="stat-val">Manual / programada</div>
+          <div class="baseline-card pilar-op">
+            <div class="baseline-lbl">Actualización de datos</div>
+            <div class="baseline-val">Manual / programada</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-lbl">Navegación interactiva</div>
-            <div class="stat-val">No disponible</div>
+          <div class="baseline-card pilar-op">
+            <div class="baseline-lbl">Navegación interactiva</div>
+            <div class="baseline-val">No disponible</div>
           </div>
         </div>
       </div>
