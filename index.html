@@ -33,7 +33,8 @@
   --seg-bg:#FBEAEC;
 
   --radius:14px;
-  --maxw:900px;
+  --maxw:1320px;
+  --maxw-text:900px;
 }
 
 *{box-sizing:border-box;}
@@ -78,10 +79,9 @@ a{color:var(--navy-700);}
   display:flex; align-items:center; gap:22px; flex-wrap:wrap;
 }
 .brand-chip{
-  background:#fff; border-radius:10px; padding:8px 16px;
   display:flex; align-items:center;
 }
-.brand-chip img.logo{height:30px; width:auto; display:block;}
+.brand-chip img.logo{height:34px; width:auto; display:block;}
 .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap;}
 .tab-btn{
   appearance:none; border:1px solid transparent; background:transparent;
@@ -97,18 +97,42 @@ a{color:var(--navy-700);}
 ============================================================ */
 .cover{
   background:linear-gradient(150deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--cyan-500) 130%);
-  padding:64px 24px 56px;
+  padding:60px 24px;
   color:#fff;
 }
 .cover-inner{max-width:var(--maxw); margin:0 auto;}
+.cover-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:56px; align-items:center;}
 .cover-eyebrow{
   display:inline-flex; align-items:center; gap:8px;
   font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600;
   color:var(--cyan-300); letter-spacing:.02em; margin-bottom:18px;
 }
 .cover-node{width:7px;height:7px;border-radius:50%;background:var(--cyan-300);}
-.cover h1{font-size:clamp(30px,4.2vw,44px); color:#fff; line-height:1.15; max-width:14ch;}
-.cover p.lead{color:#D8E7F5; font-size:17px; max-width:56ch; margin-top:16px;}
+.cover h1{font-size:clamp(30px,3.6vw,46px); color:#fff; line-height:1.15; max-width:16ch;}
+.cover p.lead{color:#D8E7F5; font-size:17px; max-width:58ch; margin-top:16px;}
+.cta-start{
+  margin-top:26px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;
+  background:#fff; color:var(--navy-950); border:none; border-radius:10px;
+  padding:13px 22px; cursor:pointer; display:inline-flex; align-items:center; gap:10px;
+  transition:transform .15s, box-shadow .15s;
+}
+.cta-start:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,.25);}
+.cta-start svg{width:16px; height:16px;}
+
+.cover-right{display:flex; flex-direction:column; gap:12px;}
+.client-pick{
+  text-align:left; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+  border-radius:14px; padding:16px 18px; cursor:pointer; backdrop-filter:blur(4px);
+  display:flex; flex-direction:column; gap:3px; transition:background .15s, border-color .15s, transform .15s;
+}
+.client-pick:hover{background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.32); transform:translateX(3px);}
+.client-pick-idx{font-family:'Space Grotesk',sans-serif; font-size:11px; color:var(--cyan-300); font-weight:600; letter-spacing:.04em;}
+.client-pick-name{font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#fff;}
+.client-pick-tag{font-size:12.5px; color:#C3D6E8;}
+
+@media (max-width:820px){
+  .cover-grid{grid-template-columns:1fr; gap:30px;}
+}
 
 /* ============================================================
    CASE VISIBILITY
@@ -127,13 +151,15 @@ a{color:var(--navy-700);}
   display:flex; align-items:center; gap:26px; flex-wrap:wrap;
 }
 .hero-logo-box{
-  width:168px; height:130px; flex-shrink:0;
-  background:#fff; border:1px solid var(--line); border-radius:16px;
+  width:200px; height:150px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center;
-  padding:16px;
+  padding:6px;
 }
 .hero-logo-box img{max-width:100%; max-height:100%; object-fit:contain;}
-.hero-logo-box.is-photo{padding:0; overflow:hidden;}
+.hero-logo-box.is-photo{
+  padding:0; overflow:hidden; border-radius:16px;
+  background:var(--mist);
+}
 .hero-logo-box.is-photo img{width:100%; height:100%; object-fit:cover;}
 .case-hero-text{flex:1; min-width:240px;}
 .case-kicker{font-size:12.5px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;}
@@ -201,6 +227,7 @@ a{color:var(--navy-700);}
 }
 .stop h3{font-size:clamp(19px,2.4vw,23px); margin-bottom:16px;}
 .stop-body{color:var(--ink); font-size:15.5px;}
+.stop-body > p, .subq p, .obj-list{max-width:76ch;}
 
 .step-nav-btns{
   display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:22px;
@@ -215,6 +242,8 @@ a{color:var(--navy-700);}
 .step-btn:disabled{opacity:.35; cursor:default; pointer-events:none;}
 .step-btn.primary{background:var(--navy-800); border-color:var(--navy-800); color:#fff;}
 .step-btn.primary:hover{background:var(--navy-950);}
+.step-btn.primary.to-next-case{background:var(--cyan-500); border-color:var(--cyan-500); color:#04202F;}
+.step-btn.primary.to-next-case:hover{background:#1FA3D1;}
 .step-pos{font-family:'Space Grotesk',sans-serif; font-size:12.5px; color:var(--muted);}
 
 .subq{margin-bottom:18px;}
@@ -251,6 +280,18 @@ a{color:var(--navy-700);}
 }
 
 /* tool blocks (punto 6) */
+.tool-tabs-wrap{margin-top:20px;}
+.subtool-pills{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+.subtool-pill{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px;
+  background:var(--mist); border:1px solid var(--line); color:var(--muted);
+  padding:8px 15px; border-radius:20px; cursor:pointer; transition:all .15s;
+}
+.subtool-pill:hover{border-color:var(--navy-700); color:var(--navy-800);}
+.subtool-pill.active{background:var(--navy-800); border-color:var(--navy-800); color:#fff;}
+.tool-tabs-wrap .tool-block{display:none; margin-top:0;}
+.tool-tabs-wrap .tool-block.active{display:block;}
+
 .tool-block{
   border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:18px; background:var(--card);
 }
@@ -259,6 +300,21 @@ a{color:var(--navy-700);}
 .tool-head h4{font-size:16px; font-family:'Space Grotesk',sans-serif;}
 .tool-head p{color:var(--muted); font-size:14.5px; margin-top:6px;}
 .tool-media{position:relative; background:var(--mist); border-top:1px solid var(--line);}
+
+/* vista previa embebida (Cummins / Power BI) */
+.preview-frame{
+  position:relative; height:280px; overflow:hidden; border-top:1px solid var(--line);
+  background:var(--mist);
+}
+.preview-frame iframe{
+  width:100%; height:100%; border:none; pointer-events:none;
+}
+.preview-frame-tag{
+  position:absolute; top:10px; left:10px; z-index:2;
+  background:rgba(8,29,52,.82); color:#EAF6FC;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:11px;
+  padding:5px 11px; border-radius:20px;
+}
 .tool-media img{cursor:zoom-in;}
 .zoom-hint{
   position:absolute; bottom:12px; right:12px; z-index:5;
@@ -347,20 +403,6 @@ a{color:var(--navy-700);}
 }
 .conclusion-card p{position:relative; color:#E6EEF6; font-size:16px;}
 
-/* ============================================================
-   FOOTER NAV between cases
-============================================================ */
-.case-nav{
-  max-width:var(--maxw); margin:0 auto; padding:0 24px 60px;
-  display:flex; justify-content:flex-end;
-}
-.next-btn{
-  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;
-  background:transparent; border:1.5px solid var(--navy-800); color:var(--navy-800);
-  padding:11px 20px; border-radius:9px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
-  transition:background .15s, color .15s;
-}
-.next-btn:hover{background:var(--navy-800); color:#fff;}
 
 footer.site-footer{
   text-align:center; padding:30px 24px 50px; color:var(--muted); font-size:12.5px;
@@ -398,10 +440,30 @@ footer.site-footer{
      COVER
 ============================================================ -->
 <div class="cover">
-  <div class="cover-inner">
-    <div class="cover-eyebrow"><span class="cover-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
-    <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
-    <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
+  <div class="cover-inner cover-grid">
+    <div class="cover-left">
+      <div class="cover-eyebrow"><span class="cover-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
+      <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
+      <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
+      <button class="cta-start" data-goto="ardepe">Ver primer caso — ARDEPE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="cover-right">
+      <button class="client-pick" data-goto="ardepe">
+        <span class="client-pick-idx">Cliente 1/3</span>
+        <span class="client-pick-name">ARDEPE</span>
+        <span class="client-pick-tag">Retención de cliente</span>
+      </button>
+      <button class="client-pick" data-goto="raciemsa">
+        <span class="client-pick-idx">Cliente 2/3</span>
+        <span class="client-pick-name">RACIEMSA</span>
+        <span class="client-pick-tag">Diferenciación comercial</span>
+      </button>
+      <button class="client-pick" data-goto="cummins">
+        <span class="client-pick-idx">Cliente 3/3</span>
+        <span class="client-pick-name">CUMMINS · PSA</span>
+        <span class="client-pick-tag">Modernización tecnológica</span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -514,88 +576,89 @@ footer.site-footer{
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Cuatro herramientas a medida, más acompañamiento directo en campo</h3>
       <div class="stop-body">
-        <p>Se hizo un trabajo de campo previo de entendimiento profundo de cómo ARDEPE trabajaba internamente, replicando esa lógica dentro de herramientas automatizadas, integradas directo a MyGeotab.</p>
+        <p>Se hizo un trabajo de campo previo de entendimiento profundo de cómo ARDEPE trabajaba internamente, replicando esa lógica dentro de herramientas automatizadas, integradas directo a MyGeotab. Cada pestaña de abajo es un desarrollo distinto.</p>
 
-        <!-- Tool: Control de KM -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Control de Kilómetros</h4>
-            <p>Cálculo automático de odómetro, rendimiento (km/galón), costo por km y consumo acumulado, con carga manual o masiva y vistas de Detalle y Resumen.</p>
-          </div>
-          <div class="tool-media">
-            <div class="confidential-badge" data-badge-for="km">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-              Datos confidenciales del cliente
+        <div class="tool-tabs-wrap" data-toolgroup="ardepe-main">
+
+          <!-- Tool: Control de KM -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Control de Kilómetros</h4>
+              <p>Cálculo automático de odómetro, rendimiento (km/galón), costo por km y consumo acumulado, con carga manual o masiva y vistas de Detalle y Resumen.</p>
             </div>
-            <img data-tool="km" data-idx="0" src="assets/ardepe/control-km-1.png" alt="Control de Kilómetros — vista Detalle">
-          </div>
-          <div class="tool-dots" data-tool-dots="km"></div>
-          <div class="tool-caption" data-tool-caption="km">Vista 1</div>
-        </div>
-
-        <!-- Tool: Control Taller -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Control de Ingreso a Taller / Neumático</h4>
-            <p>Detección automática de ingresos y salidas de cada unidad, tiempos de permanencia, y visibilidad en tiempo real de qué unidades siguen "en taller" ahora mismo.</p>
-          </div>
-          <div class="tool-media">
-            <img data-tool="taller" data-idx="0" src="assets/ardepe/control-taller-1.png" alt="Control de Ingreso a Taller — módulo Taller">
-          </div>
-          <div class="tool-dots" data-tool-dots="taller"></div>
-          <div class="tool-caption" data-tool-caption="taller">Vista 1</div>
-        </div>
-
-        <!-- Tool: Lead Time -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Lead Time por CD</h4>
-            <p>Seguimiento en tiempo real de cada viaje de Planta a Centros de Distribución y su retorno, con rankings de los CD con mayor tiempo de espera.</p>
-          </div>
-          <div class="tool-media">
-            <img data-tool="leadtime" data-idx="0" src="assets/ardepe/lead-time-1.png" alt="Lead Time por CD — comportamiento de viajes">
-          </div>
-          <div class="tool-dots" data-tool-dots="leadtime"></div>
-          <div class="tool-caption" data-tool-caption="leadtime">Vista 1</div>
-        </div>
-
-        <!-- Tool: Horas de Conduccion -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Control de Horas de Conducción</h4>
-            <p>Reconstrucción precisa de horas manejadas, tiempo detenido, y detección de relevos de unidad o tramos sin conductor asociado — clave para validar los pagos por horas trabajadas.</p>
-          </div>
-          <div class="tool-media">
-            <img data-tool="horas" data-idx="0" src="assets/ardepe/horas-conduccion-1.png" alt="Control de Horas de Conducción — vista general">
-          </div>
-          <div class="tool-dots" data-tool-dots="horas"></div>
-          <div class="tool-caption" data-tool-caption="horas">Vista 1</div>
-        </div>
-
-        <div class="confidential-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
-          Vale destacar que, para poder construir la herramienta de Control de Kilómetros, el cliente confió en Navisaf compartiendo información interna sensible de sus gastos operativos reales — un nivel de apertura que refleja la confianza construida a lo largo de la relación comercial.
-        </div>
-
-        <p style="margin-top:22px;"><strong>Seguridad — calibración de acelerómetro y validación de velocidad.</strong> Se hizo acompañamiento en campo y capacitación directa a los conductores, explicando las buenas prácticas de manejo, con el objetivo de estipular valores efectivos de referencia y reducir los falsos positivos que inflaban el número mensual de eventos. Además, se realizó una prueba de ruta en conjunto con el cliente, en condiciones de carga y de vacío, variando terreno y nivel de exigencia, para validar en la práctica qué umbral de velocidad realmente anticipa un riesgo de accidentabilidad. Con esa prueba se definió el umbral de control: <strong>velocidades mayores a 70 km/h sostenidas por más de 10 segundos</strong>, en línea con la exigencia del cliente de no superar los 80 km/h.</p>
-
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Prueba de ruta — validación de velocidad y acelerómetro</h4>
-            <p>Prueba realizada en conjunto con el área de SSOMA de Operaciones, con el objetivo de definir los parámetros de acelerómetro (frenadas, aceleraciones y giros) y de velocidad, ajustados a la realidad de la ruta y el terreno de la operación. Misma prueba registrada en dos unidades y conductores distintos, como evidencia cruzada.</p>
-          </div>
-          <div class="video-row">
-            <div class="video-box">
-              <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-1.mp4"></video>
-              <div class="video-cap">Prueba de ruta — Unidad / conductor 1</div>
+            <div class="tool-media">
+              <div class="confidential-badge" data-badge-for="km">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                Datos confidenciales del cliente
+              </div>
+              <img data-tool="km" data-idx="0" src="assets/ardepe/control-km-1.png" alt="Control de Kilómetros — vista Detalle">
             </div>
-            <div class="video-box">
-              <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-2.mp4"></video>
-              <div class="video-cap">Prueba de ruta — Unidad / conductor 2</div>
+            <div class="tool-dots" data-tool-dots="km"></div>
+            <div class="tool-caption" data-tool-caption="km">Vista 1</div>
+            <div class="confidential-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+              Vale destacar que, para poder construir esta herramienta, el cliente confió en Navisaf compartiendo información interna sensible de sus gastos operativos reales — un nivel de apertura que refleja la confianza construida a lo largo de la relación comercial.
             </div>
           </div>
-        </div>
 
+          <!-- Tool: Control Taller -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Control de Ingreso a Taller / Neumático</h4>
+              <p>Detección automática de ingresos y salidas de cada unidad, tiempos de permanencia, y visibilidad en tiempo real de qué unidades siguen "en taller" ahora mismo.</p>
+            </div>
+            <div class="tool-media">
+              <img data-tool="taller" data-idx="0" src="assets/ardepe/control-taller-1.png" alt="Control de Ingreso a Taller — módulo Taller">
+            </div>
+            <div class="tool-dots" data-tool-dots="taller"></div>
+            <div class="tool-caption" data-tool-caption="taller">Vista 1</div>
+          </div>
+
+          <!-- Tool: Lead Time -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Lead Time por CD</h4>
+              <p>Seguimiento en tiempo real de cada viaje de Planta a Centros de Distribución y su retorno, con rankings de los CD con mayor tiempo de espera.</p>
+            </div>
+            <div class="tool-media">
+              <img data-tool="leadtime" data-idx="0" src="assets/ardepe/lead-time-1.png" alt="Lead Time por CD — comportamiento de viajes">
+            </div>
+            <div class="tool-dots" data-tool-dots="leadtime"></div>
+            <div class="tool-caption" data-tool-caption="leadtime">Vista 1</div>
+          </div>
+
+          <!-- Tool: Horas de Conduccion -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Control de Horas de Conducción</h4>
+              <p>Reconstrucción precisa de horas manejadas, tiempo detenido, y detección de relevos de unidad o tramos sin conductor asociado — clave para validar los pagos por horas trabajadas.</p>
+            </div>
+            <div class="tool-media">
+              <img data-tool="horas" data-idx="0" src="assets/ardepe/horas-conduccion-1.png" alt="Control de Horas de Conducción — vista general">
+            </div>
+            <div class="tool-dots" data-tool-dots="horas"></div>
+            <div class="tool-caption" data-tool-caption="horas">Vista 1</div>
+          </div>
+
+          <!-- Tool: Prueba de ruta (video) -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Seguridad — prueba de ruta (video)</h4>
+              <p>Prueba realizada en conjunto con el área de SSOMA de Operaciones, con el objetivo de definir los parámetros de acelerómetro (frenadas, aceleraciones y giros) y de velocidad, ajustados a la realidad de la ruta y el terreno de la operación. Se hizo acompañamiento en campo y capacitación directa a los conductores. Con esta prueba se definió el umbral de control: <strong>velocidades mayores a 70 km/h sostenidas por más de 10 segundos</strong>, en línea con la exigencia del cliente de no superar los 80 km/h. Misma prueba registrada en dos unidades y conductores distintos, como evidencia cruzada.</p>
+            </div>
+            <div class="video-row">
+              <div class="video-box">
+                <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-1.mp4"></video>
+                <div class="video-cap">Prueba de ruta — Unidad / conductor 1</div>
+              </div>
+              <div class="video-box">
+                <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-2.mp4"></video>
+                <div class="video-cap">Prueba de ruta — Unidad / conductor 2</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -661,9 +724,6 @@ footer.site-footer{
 
   </div>
 
-  <div class="case-nav">
-    <button class="next-btn" data-goto="raciemsa">Siguiente caso — RACIEMSA →</button>
-  </div>
 </section>
 
 <!-- ============================================================
@@ -771,64 +831,71 @@ footer.site-footer{
       <div class="stop-label">Estrategias y gestión realizada</div>
       <h3>Cinco herramientas a medida, apuntando directo a cada falencia</h3>
       <div class="stop-body">
-        <p>Se desarrollaron cinco herramientas, cada una resolviendo una de las falencias identificadas con el cliente.</p>
+        <p>Se desarrollaron cinco herramientas, cada una resolviendo una de las falencias identificadas con el cliente. Cada pestaña de abajo es un desarrollo distinto.</p>
 
-        <!-- Tool: TPMS -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Monitoreo de TPMS</h4>
-            <p>Se impulsó junto con el dealer la ampliación de la instalación de sensores TPMS en la flota, y se construyó la integración con Navisaf para gestionar la presión en tiempo real por eje y por llanta, con semáforo de alerta por umbral PSI.</p>
+        <div class="tool-tabs-wrap" data-toolgroup="raciemsa-main">
+
+          <!-- Tool: TPMS -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Monitoreo de TPMS</h4>
+              <p>Se impulsó junto con el dealer la ampliación de la instalación de sensores TPMS en la flota, y se construyó la integración con Navisaf para gestionar la presión en tiempo real por eje y por llanta, con semáforo de alerta por umbral PSI.</p>
+            </div>
+            <div class="tool-media"><img src="assets/raciemsa/tpms.png" alt="Monitoreo de TPMS"></div>
           </div>
-          <div class="tool-media"><img src="assets/raciemsa/tpms.png" alt="Monitoreo de TPMS"></div>
+
+          <!-- Tool: Combustible -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Nivel de combustible</h4>
+              <p>Control de abastecimientos, dándole al cliente visibilidad inmediata de cada carga.</p>
+            </div>
+            <div class="tool-media"><img src="assets/raciemsa/combustible.png" alt="Nivel de combustible en tiempo real"></div>
+          </div>
+
+          <!-- Tool: Km diario -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Km diario</h4>
+              <p>Seguimiento de la operación día a día, base para sacar el costo-kilómetro real.</p>
+            </div>
+            <div class="tool-media"><img src="assets/raciemsa/km-diario.png" alt="Km diario"></div>
+          </div>
+
+          <!-- Tool: Analizador combustible -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Analizador de combustible</h4>
+              <p>Cruza RPM, nivel de combustible, ignición y velocidad para una búsqueda ágil de comportamientos anómalos — cubriendo la autonomía que el sistema base no tenía.</p>
+            </div>
+            <div class="tool-media">
+              <img data-tool="analizador" data-idx="0" src="assets/raciemsa/analizador-combustible-1.png" alt="Analizador de combustible — vista 1">
+            </div>
+            <div class="tool-dots" data-tool-dots="analizador"></div>
+            <div class="tool-caption" data-tool-caption="analizador">Vista 1</div>
+          </div>
+
+          <!-- Tool: Power BI -->
+          <div class="tool-block">
+            <div class="tool-head">
+              <h4>Power BI vía API</h4>
+              <p>Vistas de operación, seguridad, rendimientos y performance, con costos de combustible integrando datos oficiales de OSINERGMIN — costo-kilómetro diario detallado por tipo de combustible.</p>
+            </div>
+            <div class="tool-media"><img src="assets/raciemsa/powerbi-costo-km.png" alt="Power BI — referencia de costo por kilómetro"></div>
+            <div class="preview-frame">
+              <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMTY1NjM3NjAtNTcyMC00MTNiLWFjMmMtNzFhODdhY2RmNTQyIiwidCI6ImMxMzk1ZGNjLTZiYmMtNDI0Yy1hODViLTFhYzhiOTI2ZTJkMSIsImMiOjR9" title="Vista previa Power BI RACIEMSA" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+              <div class="preview-frame-tag">Vista previa</div>
+            </div>
+            <div class="external-cta">
+              <div class="ext-text">La vista completa incluye además Operación, Seguridad, Acelerómetro y Rendimientos.</div>
+              <a class="btn-ext" href="https://app.powerbi.com/view?r=eyJrIjoiMTY1NjM3NjAtNTcyMC00MTNiLWFjMmMtNzFhODdhY2RmNTQyIiwidCI6ImMxMzk1ZGNjLTZiYmMtNDI0Yy1hODViLTFhYzhiOTI2ZTJkMSIsImMiOjR9" target="_blank" rel="noopener">
+                Ver Power BI completo
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Tool: Combustible -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Nivel de combustible en tiempo real</h4>
-            <p>Control de abastecimientos, dándole al cliente visibilidad inmediata de cada carga.</p>
-          </div>
-          <div class="tool-media"><img src="assets/raciemsa/combustible.png" alt="Nivel de combustible en tiempo real"></div>
-        </div>
-
-        <!-- Tool: Km diario -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Km diario</h4>
-            <p>Seguimiento de la operación día a día, base para sacar el costo-kilómetro real.</p>
-          </div>
-          <div class="tool-media"><img src="assets/raciemsa/km-diario.png" alt="Km diario"></div>
-        </div>
-
-        <!-- Tool: Analizador combustible -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Analizador de combustible</h4>
-            <p>Cruza RPM, nivel de combustible, ignición y velocidad para una búsqueda ágil de comportamientos anómalos — cubriendo la autonomía que el sistema base no tenía.</p>
-          </div>
-          <div class="tool-media">
-            <img data-tool="analizador" data-idx="0" src="assets/raciemsa/analizador-combustible-1.png" alt="Analizador de combustible — vista 1">
-          </div>
-          <div class="tool-dots" data-tool-dots="analizador"></div>
-          <div class="tool-caption" data-tool-caption="analizador">Vista 1</div>
-        </div>
-
-        <!-- Tool: Power BI -->
-        <div class="tool-block">
-          <div class="tool-head">
-            <h4>Power BI automático vía API</h4>
-            <p>Vistas de operación, seguridad, rendimientos y performance, con costos de combustible integrando datos oficiales de OSINERGMIN — costo-kilómetro diario detallado por tipo de combustible.</p>
-          </div>
-          <div class="tool-media"><img src="assets/raciemsa/powerbi-costo-km.png" alt="Power BI — referencia de costo por kilómetro"></div>
-          <div class="external-cta">
-            <div class="ext-text">La vista completa incluye además Operación, Seguridad, Acelerómetro y Rendimientos.</div>
-            <a class="btn-ext" href="https://app.powerbi.com/view?r=eyJrIjoiMTY1NjM3NjAtNTcyMC00MTNiLWFjMmMtNzFhODdhY2RmNTQyIiwidCI6ImMxMzk1ZGNjLTZiYmMtNDI0Yy1hODViLTFhYzhiOTI2ZTJkMSIsImMiOjR9" target="_blank" rel="noopener">
-              Ver Power BI completo
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -887,9 +954,6 @@ footer.site-footer{
 
   </div>
 
-  <div class="case-nav">
-    <button class="next-btn" data-goto="cummins">Siguiente caso — Cummins / PSA →</button>
-  </div>
 </section>
 
 <!-- ============================================================
@@ -1007,6 +1071,10 @@ footer.site-footer{
             <h4>Sistema en vivo</h4>
             <p>El sistema corre con datos de demostración integrados, para poder navegarlo libremente sin depender de una conexión activa a MyGeotab.</p>
           </div>
+          <div class="preview-frame">
+            <iframe src="https://daniel-torres-create.github.io/SISTEMA-CUMMINS-PSA/" title="Vista previa del sistema Cummins PSA" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+            <div class="preview-frame-tag">Vista previa</div>
+          </div>
           <div class="external-cta" style="border-top:none;">
             <div class="ext-text">Explora el dashboard completo: Motor, Operación y navegación temporal en tiempo real.</div>
             <a class="btn-ext" href="https://daniel-torres-create.github.io/SISTEMA-CUMMINS-PSA/" target="_blank" rel="noopener">
@@ -1062,9 +1130,6 @@ footer.site-footer{
 
   </div>
 
-  <div class="case-nav">
-    <button class="next-btn" data-goto="ardepe">Volver al inicio — ARDEPE ↑</button>
-  </div>
 </section>
 
 <footer class="site-footer">Mejoras Continuas Daniel Torres · 2025–2026 · Navisaf</footer>
@@ -1137,6 +1202,30 @@ footer.site-footer{
     });
   });
 
+  // ---- Sub-pestañas de herramientas dentro del punto 6 (evita apilar todo en vertical) ----
+  document.querySelectorAll('[data-toolgroup]').forEach(function(group){
+    var blocks = Array.prototype.slice.call(group.querySelectorAll(':scope > .tool-block'));
+    if(blocks.length < 2) return;
+
+    var pills = document.createElement('div');
+    pills.className = 'subtool-pills';
+    group.insertBefore(pills, group.firstChild);
+
+    blocks.forEach(function(block, i){
+      var h4 = block.querySelector('.tool-head h4');
+      var pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'subtool-pill' + (i === 0 ? ' active' : '');
+      pill.textContent = h4 ? h4.textContent : ('Herramienta ' + (i + 1));
+      pill.addEventListener('click', function(){
+        blocks.forEach(function(b, j){ b.classList.toggle('active', j === i); });
+        pills.querySelectorAll('.subtool-pill').forEach(function(p, j){ p.classList.toggle('active', j === i); });
+      });
+      pills.appendChild(pill);
+      block.classList.toggle('active', i === 0);
+    });
+  });
+
   // ---- Stepper: un punto de gerencia a la vez, sin scroll largo ----
   var STEP_LABELS = ['Contexto','Necesidad','Pilar','Línea base','Objetivos','Estrategia','Resultados','Conclusión'];
   var stepState = {}; // caseId -> índice actual (0-based)
@@ -1156,6 +1245,13 @@ footer.site-footer{
       host.appendChild(btn);
     });
   }
+
+  var NEXT_CASE = {ardepe:'raciemsa', raciemsa:'cummins', cummins:'ardepe'};
+  var NEXT_LABEL = {
+    ardepe:'Siguiente cliente — RACIEMSA →',
+    raciemsa:'Siguiente cliente — Cummins · PSA →',
+    cummins:'Volver al inicio — ARDEPE ↑'
+  };
 
   function goToStep(caseId, idx){
     var section = document.getElementById('case-' + caseId);
@@ -1178,8 +1274,13 @@ footer.site-footer{
 
     var prevBtn = document.querySelector('[data-step-prev="' + caseId + '"]');
     var nextBtn = document.querySelector('[data-step-next="' + caseId + '"]');
+    var isLast = idx === stops.length - 1;
     if(prevBtn) prevBtn.disabled = idx === 0;
-    if(nextBtn) nextBtn.disabled = idx === stops.length - 1;
+    if(nextBtn){
+      nextBtn.disabled = false;
+      nextBtn.textContent = isLast ? NEXT_LABEL[caseId] : 'Siguiente →';
+      nextBtn.classList.toggle('to-next-case', isLast);
+    }
 
     var pos = document.querySelector('[data-step-pos="' + caseId + '"]');
     if(pos) pos.textContent = (idx + 1) + ' / ' + stops.length;
@@ -1196,7 +1297,13 @@ footer.site-footer{
     var prevBtn = document.querySelector('[data-step-prev="' + caseId + '"]');
     var nextBtn = document.querySelector('[data-step-next="' + caseId + '"]');
     if(prevBtn) prevBtn.addEventListener('click', function(){ goToStep(caseId, (stepState[caseId]||0) - 1); });
-    if(nextBtn) nextBtn.addEventListener('click', function(){ goToStep(caseId, (stepState[caseId]||0) + 1); });
+    if(nextBtn) nextBtn.addEventListener('click', function(){
+      var section = document.getElementById('case-' + caseId);
+      var total = section.querySelectorAll('.stop').length;
+      var idx = stepState[caseId] || 0;
+      if(idx === total - 1){ showCase(NEXT_CASE[caseId]); }
+      else { goToStep(caseId, idx + 1); }
+    });
   });
 
   // ---- Lightbox: ampliar cualquier captura de pantalla ----
