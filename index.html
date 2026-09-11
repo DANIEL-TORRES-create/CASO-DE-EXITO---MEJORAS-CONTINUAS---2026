@@ -93,45 +93,55 @@ a{color:var(--navy-700);}
 .tab-btn.active{background:var(--cyan-500); color:#04202F;}
 
 /* ============================================================
-   COVER
+   FRANJA LATERAL + INICIO
 ============================================================ */
-.cover{
-  background:linear-gradient(150deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--cyan-500) 130%);
-  padding:60px 24px;
+.app-shell{display:flex; align-items:flex-start;}
+
+.side-rail{
+  width:300px; flex-shrink:0;
+  background:linear-gradient(165deg, var(--navy-950) 0%, var(--navy-800) 60%, var(--cyan-500) 145%);
   color:#fff;
+  position:sticky; top:56px;
+  min-height:calc(100vh - 56px);
+  padding:44px 28px;
 }
-.cover-inner{max-width:var(--maxw); margin:0 auto;}
-.cover-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:56px; align-items:center;}
-.cover-eyebrow{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600;
-  color:var(--cyan-300); letter-spacing:.02em; margin-bottom:18px;
+.rail-eyebrow{
+  display:flex; align-items:center; gap:8px;
+  font-family:'Space Grotesk',sans-serif; font-size:11.5px; font-weight:600;
+  color:var(--cyan-300); letter-spacing:.02em; margin-bottom:16px;
 }
-.cover-node{width:7px;height:7px;border-radius:50%;background:var(--cyan-300);}
-.cover h1{font-size:clamp(30px,3.6vw,46px); color:#fff; line-height:1.15; max-width:16ch;}
-.cover p.lead{color:#D8E7F5; font-size:17px; max-width:58ch; margin-top:16px;}
-.cta-start{
-  margin-top:26px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;
-  background:#fff; color:var(--navy-950); border:none; border-radius:10px;
-  padding:13px 22px; cursor:pointer; display:inline-flex; align-items:center; gap:10px;
-  transition:transform .15s, box-shadow .15s;
+.rail-node{width:6px;height:6px;border-radius:50%;background:var(--cyan-300); flex-shrink:0;}
+.side-rail h1{font-size:clamp(21px,2vw,25px); color:#fff; line-height:1.25;}
+.side-rail p.lead{color:#D8E7F5; font-size:14px; line-height:1.6; margin-top:14px;}
+.rail-home-btn{
+  margin-top:26px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+  background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.28);
+  border-radius:9px; padding:10px 16px; cursor:pointer; display:none; align-items:center; gap:8px;
+  transition:background .15s;
 }
-.cta-start:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,.25);}
-.cta-start svg{width:16px; height:16px;}
+.rail-home-btn.show{display:inline-flex;}
+.rail-home-btn:hover{background:rgba(255,255,255,.2);}
 
-.cover-right{display:flex; flex-direction:column; gap:12px;}
+.main-content{flex:1; min-width:0;}
+
+.view-home{display:none; padding:56px clamp(24px,4vw,56px);}
+.view-home.active{display:block;}
+.view-home-head h2{font-size:clamp(20px,2.4vw,25px);}
+.view-home-head p{color:var(--muted); font-size:14.5px; margin-top:8px; max-width:60ch;}
+.home-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:28px; max-width:var(--maxw);}
 .client-pick{
-  text-align:left; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
-  border-radius:14px; padding:16px 18px; cursor:pointer; backdrop-filter:blur(4px);
-  display:flex; flex-direction:column; gap:3px; transition:background .15s, border-color .15s, transform .15s;
+  text-align:left; background:var(--card); border:1px solid var(--line);
+  border-radius:16px; padding:22px; cursor:pointer;
+  display:flex; flex-direction:column; gap:5px; transition:border-color .15s, box-shadow .15s, transform .15s;
 }
-.client-pick:hover{background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.32); transform:translateX(3px);}
-.client-pick-idx{font-family:'Space Grotesk',sans-serif; font-size:11px; color:var(--cyan-300); font-weight:600; letter-spacing:.04em;}
-.client-pick-name{font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#fff;}
-.client-pick-tag{font-size:12.5px; color:#C3D6E8;}
+.client-pick:hover{border-color:var(--navy-700); box-shadow:0 12px 28px rgba(16,68,126,.14); transform:translateY(-2px);}
+.client-pick-idx{font-family:'Space Grotesk',sans-serif; font-size:11px; color:var(--navy-700); font-weight:600; letter-spacing:.04em;}
+.client-pick-name{font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:700; color:var(--navy-950);}
+.client-pick-tag{font-size:13px; color:var(--muted);}
 
-@media (max-width:820px){
-  .cover-grid{grid-template-columns:1fr; gap:30px;}
+@media (max-width:900px){
+  .app-shell{flex-direction:column;}
+  .side-rail{width:100%; position:static; min-height:auto; padding:34px 24px;}
 }
 
 /* ============================================================
@@ -303,11 +313,12 @@ a{color:var(--navy-700);}
 
 /* vista previa embebida (Cummins / Power BI) */
 .preview-frame{
-  position:relative; height:280px; overflow:hidden; border-top:1px solid var(--line);
+  position:relative; overflow:hidden; border-top:1px solid var(--line);
   background:var(--mist);
 }
 .preview-frame iframe{
-  width:100%; height:100%; border:none; pointer-events:none;
+  position:absolute; top:0; left:0; border:none; pointer-events:none;
+  transform-origin:top left;
 }
 .preview-frame-tag{
   position:absolute; top:10px; left:10px; z-index:2;
@@ -359,6 +370,17 @@ a{color:var(--navy-700);}
 }
 .confidential-badge svg{width:11px; height:11px; flex-shrink:0;}
 .tool-dots{display:flex; gap:6px; justify-content:center; padding:12px;}
+.tool-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:6;
+  width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
+  background:rgba(8,29,52,.55); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .15s, transform .15s;
+}
+.tool-arrow:hover{background:rgba(8,29,52,.82);}
+.tool-arrow svg{width:20px; height:20px;}
+.tool-arrow.prev{left:12px;}
+.tool-arrow.next{right:12px;}
 .tool-dot{
   width:8px; height:8px; border-radius:50%; border:none; background:#C7CFDB; cursor:pointer; padding:0;
 }
@@ -402,6 +424,13 @@ a{color:var(--navy-700);}
   color:var(--cyan-300); text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;
 }
 .conclusion-card p{position:relative; color:#E6EEF6; font-size:16px;}
+.conclusion-card .subq{position:relative; margin-bottom:18px;}
+.conclusion-card .subq:last-child{margin-bottom:0;}
+.conclusion-card .subq-q{
+  position:relative; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+  color:var(--cyan-300); margin-bottom:6px;
+}
+.conclusion-card .subq p{font-size:15px;}
 
 
 footer.site-footer{
@@ -427,9 +456,11 @@ footer.site-footer{
 ============================================================ -->
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="brand-chip"><img class="logo" src="assets/navisaf-logo-blanco.png" alt="Navisaf"></div>
+    <button class="brand-chip" data-goto="home" aria-label="Ir a inicio" style="border:none;background:transparent;cursor:pointer;padding:0;">
+      <img class="logo" src="assets/navisaf-logo-blanco.png" alt="Navisaf">
+    </button>
     <div class="tabs" role="tablist" aria-label="Mejoras continuas">
-      <button class="tab-btn active" data-case="ardepe" role="tab" aria-selected="true">ARDEPE</button>
+      <button class="tab-btn" data-case="ardepe" role="tab" aria-selected="false">ARDEPE</button>
       <button class="tab-btn" data-case="raciemsa" role="tab" aria-selected="false">RACIEMSA</button>
       <button class="tab-btn" data-case="cummins" role="tab" aria-selected="false">CUMMINS · PSA</button>
     </div>
@@ -439,38 +470,47 @@ footer.site-footer{
 <!-- ============================================================
      COVER
 ============================================================ -->
-<div class="cover">
-  <div class="cover-inner cover-grid">
-    <div class="cover-left">
-      <div class="cover-eyebrow"><span class="cover-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
-      <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
-      <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
-      <button class="cta-start" data-goto="ardepe">Ver primer caso — ARDEPE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+<div class="app-shell">
+  <aside class="side-rail">
+    <div class="rail-eyebrow"><span class="rail-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
+    <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
+    <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
+    <button class="rail-home-btn" id="railHomeBtn" data-goto="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+      Inicio
+    </button>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="view-home active" id="view-home">
+      <div class="view-home-head">
+        <h2>Elige un cliente para ver el detalle</h2>
+        <p>Cada caso recorre el mismo camino: contexto, necesidad, línea base, objetivos, estrategia, resultados y conclusión.</p>
+      </div>
+      <div class="home-cards">
+        <button class="client-pick" data-goto="ardepe">
+          <span class="client-pick-idx">Cliente 1/3</span>
+          <span class="client-pick-name">ARDEPE</span>
+          <span class="client-pick-tag">Retención de cliente</span>
+        </button>
+        <button class="client-pick" data-goto="raciemsa">
+          <span class="client-pick-idx">Cliente 2/3</span>
+          <span class="client-pick-name">RACIEMSA</span>
+          <span class="client-pick-tag">Diferenciación comercial</span>
+        </button>
+        <button class="client-pick" data-goto="cummins">
+          <span class="client-pick-idx">Cliente 3/3</span>
+          <span class="client-pick-name">CUMMINS · PSA</span>
+          <span class="client-pick-tag">Modernización tecnológica</span>
+        </button>
+      </div>
     </div>
-    <div class="cover-right">
-      <button class="client-pick" data-goto="ardepe">
-        <span class="client-pick-idx">Cliente 1/3</span>
-        <span class="client-pick-name">ARDEPE</span>
-        <span class="client-pick-tag">Retención de cliente</span>
-      </button>
-      <button class="client-pick" data-goto="raciemsa">
-        <span class="client-pick-idx">Cliente 2/3</span>
-        <span class="client-pick-name">RACIEMSA</span>
-        <span class="client-pick-tag">Diferenciación comercial</span>
-      </button>
-      <button class="client-pick" data-goto="cummins">
-        <span class="client-pick-idx">Cliente 3/3</span>
-        <span class="client-pick-name">CUMMINS · PSA</span>
-        <span class="client-pick-tag">Modernización tecnológica</span>
-      </button>
-    </div>
-  </div>
-</div>
 
 <!-- ============================================================
      CASO 1 — ARDEPE
 ============================================================ -->
-<section class="case active" id="case-ardepe">
+<section class="case" id="case-ardepe">
 
   <div class="case-hero">
     <div class="case-hero-inner">
@@ -711,7 +751,18 @@ footer.site-footer{
       <div class="stop-body">
         <div class="conclusion-card">
           <div class="conclusion-tag">Retención de cliente</div>
-          <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Fue esa combinación —herramientas que resuelven el trabajo diario, más acompañamiento real con los conductores— lo que revirtió la intención de salida del cliente y consolidó la relación comercial.</p>
+          <div class="subq">
+            <div class="subq-q">¿Por qué consideramos que este es un caso de éxito?</div>
+            <p>Porque no se limitó a resolver una queja puntual: se atendieron a la vez tres pilares (Mantenimiento, Operación y Seguridad) del mismo cliente, y ese nivel de cobertura fue lo que revirtió una decisión ya tomada de cambiar de proveedor.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
+            <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Fue esa combinación —herramientas que resuelven el trabajo diario, más acompañamiento real con los conductores— lo que consolidó la relación comercial.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
+            <p>Entender a fondo el proceso manual del cliente antes de automatizarlo (no partir de un molde genérico) y complementar la herramienta digital con acompañamiento presencial en campo — la suma de ambas genera más confianza que cualquiera de las dos por separado.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -941,7 +992,18 @@ footer.site-footer{
       <div class="stop-body">
         <div class="conclusion-card">
           <div class="conclusion-tag">Diferenciación comercial</div>
-          <p>RACIEMSA aún no es cliente contractual de Navisaf, pero las herramientas desarrolladas están resolviendo, con datos concretos y resultados medibles, problemas que le costaban dinero y seguridad operativa — y que su proveedor actual no atendía. Ese es exactamente el efecto que se buscaba: que el cliente sienta la necesidad de Navisaf y vea con claridad qué lo diferencia de cualquier otra opción del mercado.</p>
+          <div class="subq">
+            <div class="subq-q">¿Por qué consideramos que este es un caso de éxito?</div>
+            <p>Porque, sin todavía ser cliente contractual, las herramientas ya están resolviendo con datos concretos un problema que le costaba dinero y seguridad operativa al prospecto — y que su proveedor actual no atendía.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
+            <p>RACIEMSA dejó de depender únicamente del TPMS de su dealer sin visibilidad propia, y hoy gestiona presión de neumáticos, combustible y costo-kilómetro por tipo de combustible desde una sola plataforma. Ese es exactamente el efecto que se buscaba: que el cliente sienta la necesidad de Navisaf y vea con claridad qué lo diferencia de cualquier otra opción del mercado.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
+            <p>Identificar primero el problema más costoso para el cliente (en este caso, las voladuras) y resolverlo con datos medibles abre la puerta para ampliar el alcance. Y trabajar en conjunto con terceros ya instalados (el dealer del TPMS) en vez de reemplazarlos, suma en lugar de generar fricción.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1117,7 +1179,18 @@ footer.site-footer{
       <div class="stop-body">
         <div class="conclusion-card">
           <div class="conclusion-tag">Modernización tecnológica percibida</div>
-          <p>El salto de un modelo de reportes estáticos a un sistema interactivo, en tiempo real e integrado nativamente a MyGeotab, no solo mejoró la experiencia de consulta: generó en el propio cliente el impulso de pedir más, validando que la inversión en desarrollo a medida es un diferenciador que el cliente reconoce y valora activamente.</p>
+          <div class="subq">
+            <div class="subq-q">¿Por qué consideramos que este es un caso de éxito?</div>
+            <p>Porque el propio cliente, sin que se lo pidiéramos, solicitó ampliar el alcance del servicio a todos sus indicadores restantes — la mejor señal de que el nuevo modelo generó valor real, no solo una mejora estética.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Cuál fue el valor generado para el cliente?</div>
+            <p>El salto de un modelo de reportes estáticos (Power BI + Power Automate) a un sistema interactivo, en tiempo real e integrado nativamente a MyGeotab, mejoró de forma inmediata la experiencia de consulta de sus gerencias frente a lo que tenían antes.</p>
+          </div>
+          <div class="subq">
+            <div class="subq-q">¿Qué aprendizajes o buenas prácticas podemos replicar?</div>
+            <p>Validar el modelo con un piloto acotado (un sistema, con datos de demostración) antes de comprometerse a migrar todo el alcance reduce el riesgo y facilita que el propio cliente pida la expansión, en vez de tener que convencerlo.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1131,6 +1204,9 @@ footer.site-footer{
   </div>
 
 </section>
+
+  </main>
+</div>
 
 <footer class="site-footer">Mejoras Continuas Daniel Torres · 2025–2026 · Navisaf</footer>
 
@@ -1146,18 +1222,24 @@ footer.site-footer{
 (function(){
   'use strict';
 
-  // ---- Tabs entre casos ----
+  // ---- Tabs entre casos + vista Inicio ----
   var tabs = document.querySelectorAll('.tab-btn');
   var cases = document.querySelectorAll('.case');
+  var viewHome = document.getElementById('view-home');
+  var railHomeBtn = document.getElementById('railHomeBtn');
 
   function showCase(id){
-    cases.forEach(function(c){ c.classList.toggle('active', c.id === 'case-' + id); });
+    var isHome = id === 'home';
+    cases.forEach(function(c){ c.classList.toggle('active', !isHome && c.id === 'case-' + id); });
+    if(viewHome) viewHome.classList.toggle('active', isHome);
     tabs.forEach(function(t){
-      var on = t.dataset.case === id;
+      var on = !isHome && t.dataset.case === id;
       t.classList.toggle('active', on);
       t.setAttribute('aria-selected', on ? 'true' : 'false');
     });
+    if(railHomeBtn) railHomeBtn.classList.toggle('show', !isHome);
     window.scrollTo({top:0, behavior:'auto'});
+    if(typeof resizeAllPreviews === 'function') resizeAllPreviews();
   }
 
   tabs.forEach(function(t){
@@ -1200,6 +1282,38 @@ footer.site-footer{
       dot.addEventListener('click', function(){ setTool(tool, idx); });
       host.appendChild(dot);
     });
+
+    // Flechas grandes prev/next, más fáciles de presionar que los puntitos
+    var img = document.querySelector('img[data-tool="' + tool + '"]');
+    var media = img ? img.closest('.tool-media') : null;
+    if(media){
+      function currentIdx(){
+        var active = media.querySelector('.tool-dot.active') || document.querySelector('.tool-dot.active[data-tool="' + tool + '"]');
+        return active ? parseInt(active.dataset.idx, 10) : 0;
+      }
+      var prevBtn = document.createElement('button');
+      prevBtn.className = 'tool-arrow prev';
+      prevBtn.type = 'button';
+      prevBtn.setAttribute('aria-label', 'Vista anterior');
+      prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 6l-6 6 6 6"/></svg>';
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'tool-arrow next';
+      nextBtn.type = 'button';
+      nextBtn.setAttribute('aria-label', 'Vista siguiente');
+      nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 6l6 6-6 6"/></svg>';
+      prevBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var n = toolFiles[tool].length, i = currentIdx();
+        setTool(tool, (i - 1 + n) % n);
+      });
+      nextBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var n = toolFiles[tool].length, i = currentIdx();
+        setTool(tool, (i + 1) % n);
+      });
+      media.appendChild(prevBtn);
+      media.appendChild(nextBtn);
+    }
   });
 
   // ---- Sub-pestañas de herramientas dentro del punto 6 (evita apilar todo en vertical) ----
@@ -1220,6 +1334,7 @@ footer.site-footer{
       pill.addEventListener('click', function(){
         blocks.forEach(function(b, j){ b.classList.toggle('active', j === i); });
         pills.querySelectorAll('.subtool-pill').forEach(function(p, j){ p.classList.toggle('active', j === i); });
+        if(typeof resizeAllPreviews === 'function') resizeAllPreviews();
       });
       pills.appendChild(pill);
       block.classList.toggle('active', i === 0);
@@ -1246,11 +1361,11 @@ footer.site-footer{
     });
   }
 
-  var NEXT_CASE = {ardepe:'raciemsa', raciemsa:'cummins', cummins:'ardepe'};
+  var NEXT_CASE = {ardepe:'raciemsa', raciemsa:'cummins', cummins:'home'};
   var NEXT_LABEL = {
     ardepe:'Siguiente cliente — RACIEMSA →',
     raciemsa:'Siguiente cliente — Cummins · PSA →',
-    cummins:'Volver al inicio — ARDEPE ↑'
+    cummins:'Volver al inicio ↑'
   };
 
   function goToStep(caseId, idx){
@@ -1287,6 +1402,7 @@ footer.site-footer{
 
     var route = section.querySelector('.route');
     if(route) route.scrollIntoView({block:'start', behavior:'auto'});
+    if(typeof resizeAllPreviews === 'function') resizeAllPreviews();
   }
 
   ['ardepe','raciemsa','cummins'].forEach(function(caseId){
@@ -1305,6 +1421,27 @@ footer.site-footer{
       else { goToStep(caseId, idx + 1); }
     });
   });
+
+  // ---- Vista previa embebida: escala la página completa al ancho disponible, sin recortes ----
+  var PREVIEW_W = 1440, PREVIEW_H = 900;
+  document.querySelectorAll('.preview-frame').forEach(function(pf){
+    var frame = pf.querySelector('iframe');
+    if(!frame) return;
+    frame.style.width = PREVIEW_W + 'px';
+    frame.style.height = PREVIEW_H + 'px';
+  });
+  function resizeAllPreviews(){
+    document.querySelectorAll('.preview-frame').forEach(function(pf){
+      if(pf.clientWidth === 0) return; // sigue oculto, se recalcula cuando se muestre
+      var frame = pf.querySelector('iframe');
+      if(!frame) return;
+      var scale = pf.clientWidth / PREVIEW_W;
+      frame.style.transform = 'scale(' + scale + ')';
+      pf.style.height = Math.round(PREVIEW_H * scale) + 'px';
+    });
+  }
+  resizeAllPreviews();
+  window.addEventListener('resize', resizeAllPreviews);
 
   // ---- Lightbox: ampliar cualquier captura de pantalla ----
   var lightbox = document.getElementById('lightbox');
