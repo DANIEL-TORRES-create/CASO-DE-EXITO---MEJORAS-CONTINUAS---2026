@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casos de Éxito GAF · 2025–2026 · Navisaf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root{
+  --navy-950:#081D34;
+  --navy-800:#10447E;
+  --navy-700:#155597;
+  --cyan-500:#27B5E7;
+  --cyan-300:#8FDCF3;
+  --ink:#14213D;
+  --muted:#5B6472;
+  --paper:#F5F8FB;
+  --card:#FFFFFF;
+  --line:#E1E6EE;
+  --mist:#EEF1F5;
+
+  --mant:#B4650E;
+  --mant-bg:#FBF0E2;
+  --op:#0E8F6F;
+  --op-bg:#E4F5EF;
+  --seg:#C23B4B;
+  --seg-bg:#FBEAEC;
+
+  --radius:14px;
+  --maxw:900px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.display{
+  font-family:'Space Grotesk',sans-serif;
+  color:var(--navy-950);
+  margin:0;
+  letter-spacing:-0.01em;
+}
+p{margin:0 0 14px;}
+p:last-child{margin-bottom:0;}
+img{max-width:100%;display:block;}
+a{color:var(--navy-700);}
+:focus-visible{outline:2.5px solid var(--cyan-500); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+.topbar{
+  position:sticky; top:0; z-index:200;
+  background:var(--navy-950);
+  border-bottom:1px solid #0000;
+  box-shadow:0 1px 0 rgba(255,255,255,.06);
+}
+.topbar-inner{
+  max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+}
+.topbar img.logo{height:22px; width:auto;}
+.tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap;}
+.tab-btn{
+  appearance:none; border:1px solid transparent; background:transparent;
+  color:#AFC3DB; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+  padding:8px 14px; border-radius:20px; cursor:pointer;
+  transition:background .15s, color .15s;
+}
+.tab-btn:hover{color:#fff;}
+.tab-btn.active{background:var(--cyan-500); color:#04202F;}
+
+/* ============================================================
+   COVER
+============================================================ */
+.cover{
+  background:linear-gradient(150deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--cyan-500) 130%);
+  padding:64px 24px 56px;
+  color:#fff;
+}
+.cover-inner{max-width:var(--maxw); margin:0 auto;}
+.cover-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600;
+  color:var(--cyan-300); letter-spacing:.02em; margin-bottom:18px;
+}
+.cover-node{width:7px;height:7px;border-radius:50%;background:var(--cyan-300);}
+.cover h1{font-size:clamp(30px,4.2vw,44px); color:#fff; line-height:1.15; max-width:14ch;}
+.cover p.lead{color:#D8E7F5; font-size:17px; max-width:56ch; margin-top:16px;}
+
+/* ============================================================
+   CASE VISIBILITY
+============================================================ */
+.case{display:none;}
+.case.active{display:block;}
+
+/* ============================================================
+   CASE HERO
+============================================================ */
+.case-hero{
+  padding:46px 24px 36px; border-bottom:1px solid var(--line); background:var(--card);
+}
+.case-hero-inner{
+  max-width:var(--maxw); margin:0 auto;
+  display:flex; align-items:center; gap:26px; flex-wrap:wrap;
+}
+.hero-logo-box{
+  width:104px; height:104px; flex-shrink:0;
+  background:var(--navy-950); border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+}
+.hero-logo-box img{max-width:100%; max-height:100%; object-fit:contain;}
+.case-hero-text{flex:1; min-width:240px;}
+.case-kicker{font-size:12.5px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;}
+.case-hero h2{font-size:clamp(24px,3vw,32px);}
+.pillar-row{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;}
+.pillar-chip{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px;
+  padding:6px 13px; border-radius:20px;
+}
+.pillar-chip.mant{background:var(--mant-bg); color:var(--mant);}
+.pillar-chip.op{background:var(--op-bg); color:var(--op);}
+.pillar-chip.seg{background:var(--seg-bg); color:var(--seg);}
+.headline-stat{
+  flex-shrink:0; text-align:right; border-left:1px solid var(--line); padding-left:26px;
+}
+.headline-stat .num{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; color:var(--navy-800); line-height:1;}
+.headline-stat .lbl{font-size:12px; color:var(--muted); margin-top:6px; max-width:16ch;}
+
+/* ============================================================
+   ROUTE / SECTIONS
+============================================================ */
+.route{max-width:var(--maxw); margin:0 auto; padding:44px 24px 80px; position:relative;}
+.stop{
+  position:relative; padding-left:44px; padding-bottom:46px;
+}
+.stop:last-child{padding-bottom:0;}
+.stop::before{ /* rail */
+  content:''; position:absolute; left:11px; top:26px; bottom:-4px; width:2px;
+  background:var(--line);
+}
+.stop:last-child::before{display:none;}
+.stop-node{
+  position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%;
+  background:#fff; border:2px solid var(--navy-800);
+  display:flex; align-items:center; justify-content:center;
+}
+.stop-node::after{content:''; width:6px; height:6px; border-radius:50%; background:var(--navy-800);}
+.stop-label{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px;
+  color:var(--navy-700); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;
+}
+.stop h3{font-size:20px; margin-bottom:14px;}
+.stop-body{color:var(--ink); font-size:15.5px;}
+
+.subq{margin-bottom:18px;}
+.subq:last-child{margin-bottom:0;}
+.subq-q{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:var(--navy-800); margin-bottom:6px;}
+
+/* stat cards (línea base / resultados) */
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:4px;}
+.stat-card{
+  background:var(--mist); border-radius:var(--radius); padding:16px 18px;
+}
+.stat-card .stat-lbl{font-size:12.5px; color:var(--muted); margin-bottom:8px;}
+.stat-card .stat-val{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; color:var(--navy-950);}
+
+/* before -> after */
+.compare-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:4px;}
+.compare-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px;
+}
+.compare-card .compare-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; color:var(--muted); margin-bottom:14px;}
+.compare-flow{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.compare-val{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px;}
+.compare-val.before{color:#94A0B2; text-decoration:line-through; text-decoration-color:#C7CFDB; font-size:16px;}
+.compare-val.after{color:var(--op); font-size:24px;}
+.compare-arrow{color:var(--cyan-500); font-size:18px;}
+.compare-note{font-size:13px; color:var(--muted); margin-top:10px;}
+
+/* objetivos list */
+.obj-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.obj-list li{position:relative; padding-left:22px;}
+.obj-list li::before{
+  content:''; position:absolute; left:0; top:8px; width:8px; height:8px; border-radius:50%;
+  background:var(--cyan-500);
+}
+
+/* tool blocks (punto 6) */
+.tool-block{
+  border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:18px; background:var(--card);
+}
+.tool-block:first-of-type{margin-top:22px;}
+.tool-head{padding:16px 20px 4px;}
+.tool-head h4{font-size:16px; font-family:'Space Grotesk',sans-serif;}
+.tool-head p{color:var(--muted); font-size:14.5px; margin-top:6px;}
+.tool-media{position:relative; background:var(--mist); border-top:1px solid var(--line);}
+.tool-media img{width:100%; height:auto; display:block;}
+.confidential-badge{
+  position:absolute; top:12px; right:12px; z-index:5;
+  background:rgba(8,29,52,.82); color:#EAF6FC; backdrop-filter:blur(2px);
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:11px;
+  padding:6px 11px; border-radius:20px; display:flex; align-items:center; gap:6px;
+  border:1px solid rgba(255,255,255,.18);
+}
+.confidential-badge svg{width:11px; height:11px; flex-shrink:0;}
+.tool-dots{display:flex; gap:6px; justify-content:center; padding:12px;}
+.tool-dot{
+  width:8px; height:8px; border-radius:50%; border:none; background:#C7CFDB; cursor:pointer; padding:0;
+}
+.tool-dot.active{background:var(--navy-800); width:20px; border-radius:5px; transition:width .15s, border-radius .15s;}
+.tool-caption{text-align:center; font-size:12.5px; color:var(--muted); padding-bottom:12px;}
+
+.video-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; padding:18px 20px;}
+.video-box video{width:100%; border-radius:10px; background:#000;}
+.video-cap{font-size:12.5px; color:var(--muted); margin-top:8px; text-align:center;}
+
+.external-cta{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  padding:20px; border-top:1px solid var(--line);
+}
+.external-cta .ext-text{font-size:14.5px; color:var(--muted); max-width:44ch;}
+.btn-ext{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+  background:var(--navy-950); color:#fff; text-decoration:none;
+  padding:11px 18px; border-radius:9px; display:inline-flex; align-items:center; gap:8px;
+  white-space:nowrap; transition:background .15s;
+}
+.btn-ext:hover{background:var(--navy-800);}
+.btn-ext svg{width:14px; height:14px;}
+
+.confidential-note{
+  margin-top:16px; font-size:13px; color:var(--muted); display:flex; gap:8px; align-items:flex-start;
+}
+.confidential-note svg{width:14px; height:14px; margin-top:2px; flex-shrink:0; color:var(--navy-700);}
+
+/* conclusion */
+.conclusion-card{
+  background:var(--navy-950); color:#fff; border-radius:18px; padding:30px 28px;
+  position:relative; overflow:hidden;
+}
+.conclusion-card::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(39,181,231,.18));
+}
+.conclusion-tag{
+  position:relative; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12px;
+  color:var(--cyan-300); text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;
+}
+.conclusion-card p{position:relative; color:#E6EEF6; font-size:16px;}
+
+/* ============================================================
+   FOOTER NAV between cases
+============================================================ */
+.case-nav{
+  max-width:var(--maxw); margin:0 auto; padding:0 24px 60px;
+  display:flex; justify-content:flex-end;
+}
+.next-btn{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;
+  background:transparent; border:1.5px solid var(--navy-800); color:var(--navy-800);
+  padding:11px 20px; border-radius:9px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  transition:background .15s, color .15s;
+}
+.next-btn:hover{background:var(--navy-800); color:#fff;}
+
+footer.site-footer{
+  text-align:center; padding:30px 24px 50px; color:var(--muted); font-size:12.5px;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width:640px){
+  .case-hero-inner{flex-direction:column; align-items:flex-start;}
+  .headline-stat{border-left:none; padding-left:0; text-align:left; border-top:1px solid var(--line); padding-top:14px; width:100%;}
+  .stop{padding-left:36px;}
+  .route{padding-top:32px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOPBAR
+============================================================ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <img class="logo" src="assets/navisaf-logo-blanco.png" alt="Navisaf">
+    <div class="tabs" role="tablist" aria-label="Casos de éxito">
+      <button class="tab-btn active" data-case="ardepe" role="tab" aria-selected="true">ARDEPE</button>
+      <button class="tab-btn" data-case="raciemsa" role="tab" aria-selected="false">RACIEMSA</button>
+      <button class="tab-btn" data-case="cummins" role="tab" aria-selected="false">CUMMINS · PSA</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     COVER
+============================================================ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow"><span class="cover-node"></span>CASOS DE ÉXITO GAF · 2025–2026</div>
+    <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
+    <p class="lead">Tres clientes, tres necesidades distintas — mantenimiento, operación y seguridad — y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASO 1 — ARDEPE
+============================================================ -->
+<section class="case active" id="case-ardepe">
+
+  <div class="case-hero">
+    <div class="case-hero-inner">
+      <div class="hero-logo-box"><img src="assets/ardepe/hero.png" alt="Logo ARDEPE"></div>
+      <div class="case-hero-text">
+        <div class="case-kicker">Caso de éxito · Retención de cliente</div>
+        <h2>ARDEPE</h2>
+        <div class="pillar-row">
+          <span class="pillar-chip mant">Mantenimiento</span>
+          <span class="pillar-chip op">Operación</span>
+          <span class="pillar-chip seg">Seguridad</span>
+        </div>
+      </div>
+      <div class="headline-stat">
+        <div class="num">1.5 días → 2 min</div>
+        <div class="lbl">en costos de combustible y kilometraje</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="route">
+
+    <!-- 1. Contexto -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Contexto del cliente</div>
+      <h3>Una flota dividida en dos operaciones, con datos que no se traducían en gestión</h3>
+      <div class="stop-body">
+        <p>ARDEPE es una empresa de transporte de carga que opera bajo dos frentes claramente diferenciados: flota <strong>LOCAL</strong> y flota <strong>PROVINCIA</strong>, cada una con su propia dinámica, sus propios costos y sus propios riesgos operativos. Toda su flota está monitoreada bajo MyGeotab, lo que le da al cliente una base de datos de telemetría robusta — pero que, sin herramientas que la traduzcan a información de gestión, se quedaba solo en datos crudos, sin uso práctico para las áreas de Mantenimiento, Operaciones y Seguridad.</p>
+      </div>
+    </div>
+
+    <!-- 2. Necesidad -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Necesidad, problemática o expectativa</div>
+      <h3>Procesos manuales, desgaste operativo y una relación comercial en riesgo</h3>
+      <div class="stop-body">
+        <div class="subq">
+          <div class="subq-q">¿Qué situación identificó el cliente?</div>
+          <p>ARDEPE dependía casi por completo de procesos manuales para sostener su operación diaria. El área de Mantenimiento armaba a mano, mes a mes, los cálculos de consumo y costo real de combustible por unidad, cruzando planillas. El área de Operaciones tenía que validar manualmente —contra el equipo de Monitoreo— qué unidades habían cumplido sus rutas, cuánto tiempo pasaron en cada Centro de Distribución, y si las horas de conducción reportadas por cada chofer coincidían con la realidad para efectos de pago. A esto se sumaban inconsistencias en el servicio que el cliente venía percibiendo.</p>
+        </div>
+        <div class="subq">
+          <div class="subq-q">¿Cuál era la necesidad o el reto a resolver?</div>
+          <p>Este desgaste representaba horas de trabajo especializado, todos los meses, solo para tener visibilidad de lo que ya estaba pasando en la flota. Ya desde finales de 2025 el cliente tenía en mente evaluar un cambio de proveedor, y esa intención se consolidó a inicios de 2026, al no sentir que la plataforma resolviera estas fricciones del día a día ni las inconsistencias de servicio. El reto era claro: convertir datos crudos de telemetría en información de gestión accionable, sin depender de trabajo manual, y recuperar la confianza del cliente en el servicio.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pilar -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Pilar gestionado</div>
+      <h3>Mantenimiento, Operación y Seguridad</h3>
+      <div class="stop-body">
+        <p>Un caso que atraviesa los tres frentes de la gestión de flota al mismo tiempo: control de costos (Mantenimiento), seguimiento en tiempo real de la operación (Operación), y comportamiento de conducción (Seguridad).</p>
+      </div>
+    </div>
+
+    <!-- 4. Línea base -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Línea base</div>
+      <h3>El punto de partida, antes de las herramientas</h3>
+      <div class="stop-body">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Mantenimiento — reporte de costos</div>
+            <div class="stat-val">1.5 días</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Operación — validación completa</div>
+            <div class="stat-val">6 horas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Seguridad — eventos de acelerómetro / mes</div>
+            <div class="stat-val">200 – 500</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Seguridad — umbral de velocidad</div>
+            <div class="stat-val">Sin validar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Objetivos -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Objetivos</div>
+      <h3>Qué se buscaba lograr</h3>
+      <div class="stop-body">
+        <ul class="obj-list">
+          <li>Reducir drásticamente el tiempo que le toma al cliente convertir datos crudos de telemetría en información de gestión accionable.</li>
+          <li>Automatizar los cálculos de costo real de combustible y kilometraje.</li>
+          <li>Dar a Operaciones una herramienta de seguimiento en tiempo real que reemplace la validación manual con Monitoreo.</li>
+          <li>Depurar los eventos de acelerómetro hasta un número realmente controlable y accionable por mes, eliminando falsos positivos.</li>
+          <li>Validar en campo el umbral de velocidad que el cliente debía controlar, en línea con su exigencia de no superar los 80 km/h.</li>
+          <li>Sostener y profundizar la relación comercial, revirtiendo la intención de cambio de proveedor.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. Estrategia -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Estrategias y gestión realizada</div>
+      <h3>Cuatro herramientas a medida, más acompañamiento directo en campo</h3>
+      <div class="stop-body">
+        <p>Se hizo un trabajo de campo previo de entendimiento profundo de cómo ARDEPE trabajaba internamente, replicando esa lógica dentro de herramientas automatizadas, integradas directo a MyGeotab.</p>
+
+        <!-- Tool: Control de KM -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Control de Kilómetros</h4>
+            <p>Cálculo automático de odómetro, rendimiento (km/galón), costo por km y consumo acumulado, con carga manual o masiva y vistas de Detalle y Resumen.</p>
+          </div>
+          <div class="tool-media">
+            <div class="confidential-badge" data-badge-for="km">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              Datos confidenciales del cliente
+            </div>
+            <img data-tool="km" data-idx="0" src="assets/ardepe/control-km-1.png" alt="Control de Kilómetros — vista Detalle">
+          </div>
+          <div class="tool-dots" data-tool-dots="km">
+            <button class="tool-dot active" data-tool="km" data-idx="0"></button>
+            <button class="tool-dot" data-tool="km" data-idx="1"></button>
+          </div>
+          <div class="tool-caption" data-tool-caption="km">Vista Detalle</div>
+        </div>
+
+        <!-- Tool: Control Taller -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Control de Ingreso a Taller / Neumático</h4>
+            <p>Detección automática de ingresos y salidas de cada unidad, tiempos de permanencia, y visibilidad en tiempo real de qué unidades siguen "en taller" ahora mismo.</p>
+          </div>
+          <div class="tool-media">
+            <img data-tool="taller" data-idx="0" src="assets/ardepe/control-taller-1.png" alt="Control de Ingreso a Taller — módulo Taller">
+          </div>
+          <div class="tool-dots" data-tool-dots="taller">
+            <button class="tool-dot active" data-tool="taller" data-idx="0"></button>
+            <button class="tool-dot" data-tool="taller" data-idx="1"></button>
+          </div>
+          <div class="tool-caption" data-tool-caption="taller">Módulo Taller</div>
+        </div>
+
+        <!-- Tool: Lead Time -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Lead Time por CD</h4>
+            <p>Seguimiento en tiempo real de cada viaje de Planta a Centros de Distribución y su retorno, con rankings de los CD con mayor tiempo de espera.</p>
+          </div>
+          <div class="tool-media">
+            <img data-tool="leadtime" data-idx="0" src="assets/ardepe/lead-time-1.png" alt="Lead Time por CD — comportamiento de viajes">
+          </div>
+          <div class="tool-dots" data-tool-dots="leadtime">
+            <button class="tool-dot active" data-tool="leadtime" data-idx="0"></button>
+            <button class="tool-dot" data-tool="leadtime" data-idx="1"></button>
+          </div>
+          <div class="tool-caption" data-tool-caption="leadtime">Comportamiento de viajes</div>
+        </div>
+
+        <!-- Tool: Horas de Conduccion -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Control de Horas de Conducción</h4>
+            <p>Reconstrucción precisa de horas manejadas, tiempo detenido, y detección de relevos de unidad o tramos sin conductor asociado — clave para validar los pagos por horas trabajadas.</p>
+          </div>
+          <div class="tool-media">
+            <img data-tool="horas" data-idx="0" src="assets/ardepe/horas-conduccion-1.png" alt="Control de Horas de Conducción — vista general">
+          </div>
+          <div class="tool-dots" data-tool-dots="horas">
+            <button class="tool-dot active" data-tool="horas" data-idx="0"></button>
+            <button class="tool-dot" data-tool="horas" data-idx="1"></button>
+          </div>
+          <div class="tool-caption" data-tool-caption="horas">Vista general</div>
+        </div>
+
+        <div class="confidential-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+          Vale destacar que, para poder construir la herramienta de Control de Kilómetros, el cliente confió en Navisaf compartiendo información interna sensible de sus gastos operativos reales — un nivel de apertura que refleja la confianza construida a lo largo de la relación comercial.
+        </div>
+
+        <p style="margin-top:22px;"><strong>Seguridad — calibración de acelerómetro y validación de velocidad.</strong> Se hizo acompañamiento en campo y capacitación directa a los conductores, explicando las buenas prácticas de manejo, con el objetivo de estipular valores efectivos de referencia y reducir los falsos positivos que inflaban el número mensual de eventos. Además, se realizó una prueba de ruta en conjunto con el cliente, en condiciones de carga y de vacío, variando terreno y nivel de exigencia, para validar en la práctica qué umbral de velocidad realmente anticipa un riesgo de accidentabilidad. Con esa prueba se definió el umbral de control: <strong>velocidades mayores a 70 km/h sostenidas por más de 10 segundos</strong>, en línea con la exigencia del cliente de no superar los 80 km/h.</p>
+
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Prueba de ruta — validación de velocidad y acelerómetro</h4>
+            <p>Misma prueba realizada en dos unidades y conductores distintos, como evidencia cruzada.</p>
+          </div>
+          <div class="video-row">
+            <div class="video-box">
+              <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-1.mp4"></video>
+              <div class="video-cap">Prueba de ruta — Unidad / conductor 1</div>
+            </div>
+            <div class="video-box">
+              <video controls preload="metadata" src="assets/ardepe/video-prueba-ruta-2.mp4"></video>
+              <div class="video-cap">Prueba de ruta — Unidad / conductor 2</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 7. Resultados -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Resultados</div>
+      <h3>La evolución frente a la línea base</h3>
+      <div class="stop-body">
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-title">MANTENIMIENTO · REPORTE DE COSTOS</div>
+            <div class="compare-flow">
+              <span class="compare-val before">1.5 días</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">2 min</span>
+            </div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">OPERACIÓN · VALIDACIÓN COMPLETA</div>
+            <div class="compare-flow">
+              <span class="compare-val before">6 horas</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">10 min</span>
+            </div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">SEGURIDAD · EVENTOS ACELERÓMETRO / MES</div>
+            <div class="compare-flow">
+              <span class="compare-val before">200 – 500</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">5 – 20</span>
+            </div>
+            <div class="compare-note">Eventos ya depurados de falsos positivos y realmente controlables.</div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">SEGURIDAD · UMBRAL DE VELOCIDAD</div>
+            <div class="compare-flow">
+              <span class="compare-val after">&gt;70 km/h por &gt;10s</span>
+            </div>
+            <div class="compare-note">Umbral validado en campo, en línea con la exigencia del cliente de no superar 80 km/h.</div>
+          </div>
+        </div>
+        <p style="margin-top:18px;">El cliente, que desde fines de 2025 evaluaba un cambio de proveedor, hoy usa estas herramientas como parte integral de su operación diaria en Mantenimiento, Operaciones y Seguridad.</p>
+      </div>
+    </div>
+
+    <!-- 8. Conclusión -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Conclusión / Impacto del caso</div>
+      <div class="stop-body">
+        <div class="conclusion-card">
+          <div class="conclusion-tag">Retención de cliente</div>
+          <p>ARDEPE ya contaba con reportes personalizados en Power BI, pero estos no llegaban al nivel de profundidad ni de integración directa con la gestión interna que sí lograron los desarrollos a medida, sumado al acompañamiento en campo en temas de seguridad vial. Fue esa combinación —herramientas que resuelven el trabajo diario, más acompañamiento real con los conductores— lo que revirtió la intención de salida del cliente y consolidó la relación comercial.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="case-nav">
+    <button class="next-btn" data-goto="raciemsa">Siguiente caso — RACIEMSA →</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASO 2 — RACIEMSA
+============================================================ -->
+<section class="case" id="case-raciemsa">
+
+  <div class="case-hero">
+    <div class="case-hero-inner">
+      <div class="hero-logo-box"><img src="assets/raciemsa/hero.png" alt="Logo RACIEMSA"></div>
+      <div class="case-hero-text">
+        <div class="case-kicker">Caso de éxito · Diferenciación comercial</div>
+        <h2>RACIEMSA</h2>
+        <div class="pillar-row">
+          <span class="pillar-chip seg">Seguridad</span>
+          <span class="pillar-chip mant">Mantenimiento</span>
+          <span class="pillar-chip op">Operación</span>
+        </div>
+      </div>
+      <div class="headline-stat">
+        <div class="num">1 – 2 / mes</div>
+        <div class="lbl">voladuras de neumático, con casos ya prevenidos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="route">
+
+    <!-- 1. Contexto -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Contexto del cliente</div>
+      <h3>Una flota con tres tipos de combustible, y tres estructuras de costo distintas</h3>
+      <div class="stop-body">
+        <p>RACIEMSA es una empresa de transporte con una particularidad que complejiza su gestión: opera una flota mixta con tres tipos de combustible — <strong>Diesel, GNV y GNL</strong> — cada uno con su propio comportamiento y sus propios riesgos. Es un cliente potencial referido por San Bartolomé, actualmente en proceso de evaluación para firmar contrato con Navisaf.</p>
+      </div>
+    </div>
+
+    <!-- 2. Necesidad -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Necesidad, problemática o expectativa</div>
+      <h3>Ciego frente a la presión de sus neumáticos, y sin autonomía para detectar sustracciones</h3>
+      <div class="stop-body">
+        <div class="subq">
+          <div class="subq-q">¿Qué situación identificó el cliente?</div>
+          <p>El cliente ya contaba con sensores TPMS instalados de forma parcial en su flota, a través de su dealer — pero sin ninguna integración con su plataforma de gestión. En la práctica, aunque existían algunos sensores, el cliente estaba prácticamente ciego frente a la presión de sus neumáticos en tiempo real: no había un puente entre el TPMS y Navisaf que permitiera gestionar esa información de forma activa. A esto se sumaba la falta de control en tiempo real de sus abastecimientos de combustible, y una limitación del sistema base para cruzar variables como RPM, nivel de combustible, ignición y velocidad de forma ágil.</p>
+        </div>
+        <div class="subq">
+          <div class="subq-q">¿Cuál era la necesidad o el reto a resolver?</div>
+          <p>El reto no era simplemente usar el TPMS que ya existía, sino impulsar junto con el dealer la ampliación de la instalación de estos sensores en toda la flota, para que desde la plataforma se pudiera finalmente gestionar esa información en tiempo real, cruzarla con el resto de la operación y generar alertas accionables. A esto se sumaba la necesidad de un costo-kilómetro diario, claro y desagregado por tipo de combustible.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pilar -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Pilar gestionado</div>
+      <h3>Seguridad como eje principal, con Mantenimiento y Operación como complementarios</h3>
+      <div class="stop-body">
+        <p>La urgencia de negocio estaba en Seguridad —las voladuras de neumático— pero la solución se apoyó también en visibilidad de combustible y costo-kilómetro, integrando los tres pilares de gestión de flota.</p>
+      </div>
+    </div>
+
+    <!-- 4. Línea base -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Línea base</div>
+      <h3>El punto de partida, entre 2025 y mayo de 2026</h3>
+      <div class="stop-body">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Voladuras de neumático por mes</div>
+            <div class="stat-val">Varias al mes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Visibilidad de presión TPMS</div>
+            <div class="stat-val">Solo vía dealer</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Detección de sustracción de combustible</div>
+            <div class="stat-val">Sin autonomía</div>
+          </div>
+        </div>
+        <p style="margin-top:16px;">Este número elevado y recurrente se sostenía por la falta de visibilidad propia sobre la presión de las llantas — el cliente dependía enteramente del TPMS de su dealer, sin poder cruzar esa información con su propia data operativa ni actuar de forma preventiva.</p>
+      </div>
+    </div>
+
+    <!-- 5. Objetivos -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Objetivos</div>
+      <h3>Qué se buscaba lograr</h3>
+      <div class="stop-body">
+        <ul class="obj-list">
+          <li>Reducir significativamente la frecuencia de voladuras de neumático mediante monitoreo de presión propio, en tiempo real y con alertas.</li>
+          <li>Dar al cliente control y visibilidad total de sus abastecimientos de combustible.</li>
+          <li>Habilitar un diagnóstico ágil de posibles sustracciones de combustible, cruzando variables que el sistema base no correlacionaba.</li>
+          <li>Entregar costo-kilómetro diario, desagregado por tipo de combustible (Diesel, GNV, GNL).</li>
+          <li>Diferenciar la propuesta de Navisaf frente a otros proveedores, de forma que el cliente vea un motivo concreto para firmar contrato.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. Estrategia -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Estrategias y gestión realizada</div>
+      <h3>Cinco herramientas a medida, apuntando directo a cada falencia</h3>
+      <div class="stop-body">
+        <p>Se desarrollaron cinco herramientas, cada una resolviendo una de las falencias identificadas con el cliente.</p>
+
+        <!-- Tool: TPMS -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Monitoreo de TPMS</h4>
+            <p>Se impulsó junto con el dealer la ampliación de la instalación de sensores TPMS en la flota, y se construyó la integración con Navisaf para gestionar la presión en tiempo real por eje y por llanta, con semáforo de alerta por umbral PSI.</p>
+          </div>
+          <div class="tool-media"><img src="assets/raciemsa/tpms.png" alt="Monitoreo de TPMS"></div>
+        </div>
+
+        <!-- Tool: Combustible -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Nivel de combustible en tiempo real</h4>
+            <p>Control de abastecimientos, dándole al cliente visibilidad inmediata de cada carga.</p>
+          </div>
+          <div class="tool-media"><img src="assets/raciemsa/combustible.png" alt="Nivel de combustible en tiempo real"></div>
+        </div>
+
+        <!-- Tool: Km diario -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Km diario</h4>
+            <p>Seguimiento de la operación día a día, base para sacar el costo-kilómetro real.</p>
+          </div>
+          <div class="tool-media"><img src="assets/raciemsa/km-diario.png" alt="Km diario"></div>
+        </div>
+
+        <!-- Tool: Analizador combustible -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Analizador de combustible</h4>
+            <p>Cruza RPM, nivel de combustible, ignición y velocidad para una búsqueda ágil de comportamientos anómalos — cubriendo la autonomía que el sistema base no tenía.</p>
+          </div>
+          <div class="tool-media">
+            <img data-tool="analizador" data-idx="0" src="assets/raciemsa/analizador-combustible-1.png" alt="Analizador de combustible — vista 1">
+          </div>
+          <div class="tool-dots" data-tool-dots="analizador">
+            <button class="tool-dot active" data-tool="analizador" data-idx="0"></button>
+            <button class="tool-dot" data-tool="analizador" data-idx="1"></button>
+          </div>
+          <div class="tool-caption" data-tool-caption="analizador">Vista 1</div>
+        </div>
+
+        <!-- Tool: Power BI -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Power BI automático vía API</h4>
+            <p>Vistas de operación, seguridad, rendimientos y performance, con costos de combustible integrando datos oficiales de OSINERGMIN — costo-kilómetro diario detallado por tipo de combustible.</p>
+          </div>
+          <div class="tool-media"><img src="assets/raciemsa/powerbi-costo-km.png" alt="Power BI — referencia de costo por kilómetro"></div>
+          <div class="external-cta">
+            <div class="ext-text">La vista completa incluye además Operación, Seguridad, Acelerómetro y Rendimientos.</div>
+            <a class="btn-ext" href="https://app.powerbi.com/view?r=eyJrIjoiMTY1NjM3NjAtNTcyMC00MTNiLWFjMmMtNzFhODdhY2RmNTQyIiwidCI6ImMxMzk1ZGNjLTZiYmMtNDI0Yy1hODViLTFhYzhiOTI2ZTJkMSIsImMiOjR9" target="_blank" rel="noopener">
+              Ver Power BI completo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 7. Resultados -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Resultados</div>
+      <h3>La evolución frente a la línea base</h3>
+      <div class="stop-body">
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-title">VOLADURAS DE NEUMÁTICO / MES</div>
+            <div class="compare-flow">
+              <span class="compare-val before">Varias al mes</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">1 – 2</span>
+            </div>
+            <div class="compare-note">Con casos puntuales ya prevenidos gracias a la alerta a tiempo de baja presión.</div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">VISIBILIDAD DE TPMS</div>
+            <div class="compare-flow">
+              <span class="compare-val before">Solo dealer</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">Gestión propia</span>
+            </div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">DIAGNÓSTICO DE SUSTRACCIÓN</div>
+            <div class="compare-flow">
+              <span class="compare-val before">Sin autonomía</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">Ágil y con datos cruzados</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:18px;">El cliente dejó de depender exclusivamente del TPMS de su dealer y ahora gestiona esta información de forma autónoma, con datos cruzados en tiempo real para hacer diagnósticos más rápidos y sustentados.</p>
+      </div>
+    </div>
+
+    <!-- 8. Conclusión -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Conclusión / Impacto del caso</div>
+      <div class="stop-body">
+        <div class="conclusion-card">
+          <div class="conclusion-tag">Diferenciación comercial</div>
+          <p>RACIEMSA aún no es cliente contractual de Navisaf, pero las herramientas desarrolladas están resolviendo, con datos concretos y resultados medibles, problemas que le costaban dinero y seguridad operativa — y que su proveedor actual no atendía. Ese es exactamente el efecto que se buscaba: que el cliente sienta la necesidad de Navisaf y vea con claridad qué lo diferencia de cualquier otra opción del mercado.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="case-nav">
+    <button class="next-btn" data-goto="cummins">Siguiente caso — Cummins / PSA →</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASO 3 — CUMMINS / PSA
+============================================================ -->
+<section class="case" id="case-cummins">
+
+  <div class="case-hero">
+    <div class="case-hero-inner">
+      <div class="hero-logo-box"><img src="assets/cummins/hero.png" alt="Logo Cummins / PSA"></div>
+      <div class="case-hero-text">
+        <div class="case-kicker">Caso de éxito · Modernización tecnológica</div>
+        <h2>CUMMINS · PSA</h2>
+        <div class="pillar-row">
+          <span class="pillar-chip mant">Motor</span>
+          <span class="pillar-chip op">Operación</span>
+          <span class="pillar-chip seg">Seguridad</span>
+        </div>
+      </div>
+      <div class="headline-stat">
+        <div class="num">100%</div>
+        <div class="lbl">de indicadores solicitados para migración</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="route">
+
+    <!-- 1. Contexto -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Contexto del cliente</div>
+      <h3>Telemetría Cummins gestionada con reportes estáticos</h3>
+      <div class="stop-body">
+        <p>Cliente con una flota monitoreada bajo telemetría Cummins, que hasta este desarrollo gestionaba sus indicadores de flota apoyándose en <strong>Power BI combinado con Power Automate</strong> — una solución funcional, pero con límites claros de interactividad y de tiempo real.</p>
+      </div>
+    </div>
+
+    <!-- 2. Necesidad -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Necesidad, problemática o expectativa</div>
+      <h3>Indicadores rígidos, sin exploración interactiva</h3>
+      <div class="stop-body">
+        <div class="subq">
+          <div class="subq-q">¿Qué situación identificó el cliente?</div>
+          <p>Varios de los indicadores clave de la flota se armaban de forma manual, con procesos de actualización periódica vía Power Automate, sin que el usuario final pudiera navegar, filtrar o explorar los datos de forma interactiva.</p>
+        </div>
+        <div class="subq">
+          <div class="subq-q">¿Cuál era la necesidad o el reto a resolver?</div>
+          <p>Esto significaba tiempos de espera para tener información actualizada, y una experiencia de consulta rígida, lejos de lo que hoy se espera de una plataforma de gestión de flota moderna.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pilar -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Pilar gestionado</div>
+      <h3>Motor, Operación y Seguridad, en un dashboard integral</h3>
+      <div class="stop-body">
+        <p>Un solo sistema que reúne los tres frentes de la telemetría del motor y de la operación, en vez de reportes sueltos por tema.</p>
+      </div>
+    </div>
+
+    <!-- 4. Línea base -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Línea base</div>
+      <h3>El punto de partida</h3>
+      <div class="stop-body">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-lbl">Herramienta</div>
+            <div class="stat-val">Power BI + Power Automate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Actualización de datos</div>
+            <div class="stat-val">Manual / programada</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-lbl">Navegación interactiva</div>
+            <div class="stat-val">No disponible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Objetivos -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Objetivos</div>
+      <h3>Qué se buscaba lograr</h3>
+      <div class="stop-body">
+        <ul class="obj-list">
+          <li>Migrar los indicadores manuales a un sistema interactivo, con datos en tiempo real, consumidos vía API propia.</li>
+          <li>Integrar la solución directamente como Add-In dentro de MyGeotab, de forma nativa a la experiencia del cliente.</li>
+          <li>Validar el modelo con el cliente para sentar las bases de una migración progresiva de todos sus indicadores restantes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. Estrategia -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Estrategias y gestión realizada</div>
+      <h3>Un sistema propio, construido desde cero, vía API</h3>
+      <div class="stop-body">
+        <p>Se construyó un sistema propio, conectado vía API, integrado como Add-In dentro de MyGeotab, con tres grandes módulos:</p>
+        <ul class="obj-list" style="margin-top:14px;">
+          <li><strong>Motor:</strong> comportamiento en tiempo real (RPM, presión de aceite, refrigerante, carga, presión de admisión), consumo, historial de encendidos, y fallas clasificadas automáticamente por severidad bajo el estándar SAE J1939 (FMI), con alertas de recurrencia.</li>
+          <li><strong>Operación:</strong> rendimientos (gal/hora y km/galón) y uso de flota (conducción, ralentí, tiempo detenido), con comparativas por unidad y por mes.</li>
+          <li><strong>Seguridad:</strong> módulo en camino a habilitarse, dentro de la misma arquitectura.</li>
+        </ul>
+        <p style="margin-top:14px;">Todo con navegación temporal completa (día, mes, año), comparativas cruzadas, y un panel de inicio que resume automáticamente los hallazgos más relevantes del trimestre.</p>
+
+        <div class="tool-block">
+          <div class="tool-head">
+            <h4>Sistema en vivo</h4>
+            <p>El sistema corre con datos de demostración integrados, para poder navegarlo libremente sin depender de una conexión activa a MyGeotab.</p>
+          </div>
+          <div class="external-cta" style="border-top:none;">
+            <div class="ext-text">Explora el dashboard completo: Motor, Operación y navegación temporal en tiempo real.</div>
+            <a class="btn-ext" href="https://daniel-torres-create.github.io/SISTEMA-CUMMINS-PSA/" target="_blank" rel="noopener">
+              Ver sistema en vivo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Resultados -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Resultados</div>
+      <h3>Del reporte estático a la demanda activa del cliente</h3>
+      <div class="stop-body">
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-title">EXPERIENCIA DE CONSULTA</div>
+            <div class="compare-flow">
+              <span class="compare-val before">Estática, manual</span>
+              <span class="compare-arrow">→</span>
+              <span class="compare-val after">Interactiva, en vivo</span>
+            </div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-title">ALCANCE SOLICITADO POR EL CLIENTE</div>
+            <div class="compare-flow">
+              <span class="compare-val after">Migración de todos los indicadores</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:18px;">El cliente y sus gerencias mostraron un nivel de satisfacción alto con el nuevo modelo, notando la diferencia inmediata frente a la experiencia estática que tenían antes. El cliente solicitó de forma proactiva la migración progresiva de todos sus indicadores restantes hacia este nuevo sistema — es decir, el cliente mismo generó la demanda de ampliar el alcance del servicio.</p>
+      </div>
+    </div>
+
+    <!-- 8. Conclusión -->
+    <div class="stop">
+      <div class="stop-node"></div>
+      <div class="stop-label">Conclusión / Impacto del caso</div>
+      <div class="stop-body">
+        <div class="conclusion-card">
+          <div class="conclusion-tag">Modernización tecnológica percibida</div>
+          <p>El salto de un modelo de reportes estáticos a un sistema interactivo, en tiempo real e integrado nativamente a MyGeotab, no solo mejoró la experiencia de consulta: generó en el propio cliente el impulso de pedir más, validando que la inversión en desarrollo a medida es un diferenciador que el cliente reconoce y valora activamente.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="case-nav">
+    <button class="next-btn" data-goto="ardepe">Volver al inicio — ARDEPE ↑</button>
+  </div>
+</section>
+
+<footer class="site-footer">Casos de Éxito GAF · 2025–2026 · Navisaf</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ---- Tabs entre casos ----
+  var tabs = document.querySelectorAll('.tab-btn');
+  var cases = document.querySelectorAll('.case');
+
+  function showCase(id){
+    cases.forEach(function(c){ c.classList.toggle('active', c.id === 'case-' + id); });
+    tabs.forEach(function(t){
+      var on = t.dataset.case === id;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ showCase(t.dataset.case); });
+  });
+
+  document.querySelectorAll('[data-goto]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showCase(btn.dataset.goto); });
+  });
+
+  // ---- Carrusel de 2 vistas por herramienta ----
+  var toolFiles = {
+    km:        ['assets/ardepe/control-km-1.png', 'assets/ardepe/control-km-2.png'],
+    taller:    ['assets/ardepe/control-taller-1.png', 'assets/ardepe/control-taller-2.png'],
+    leadtime:  ['assets/ardepe/lead-time-1.png', 'assets/ardepe/lead-time-2.png'],
+    horas:     ['assets/ardepe/horas-conduccion-1.png', 'assets/ardepe/horas-conduccion-2.png'],
+    analizador:['assets/raciemsa/analizador-combustible-1.png', 'assets/raciemsa/analizador-combustible-2.png']
+  };
+  var toolCaptions = {
+    km:        ['Vista Detalle', 'Vista Resumen'],
+    taller:    ['Módulo Taller', 'Módulo Neumático'],
+    leadtime:  ['Comportamiento de viajes', 'Tiempo en zonas y tendencias'],
+    horas:     ['Vista general', 'Detalle por conductor'],
+    analizador:['Vista 1', 'Vista 2']
+  };
+
+  document.querySelectorAll('.tool-dot').forEach(function(dot){
+    dot.addEventListener('click', function(){
+      var tool = dot.dataset.tool, idx = parseInt(dot.dataset.idx, 10);
+      var img = document.querySelector('img[data-tool="' + tool + '"]');
+      if(img && toolFiles[tool]) img.src = toolFiles[tool][idx];
+      var cap = document.querySelector('[data-tool-caption="' + tool + '"]');
+      if(cap && toolCaptions[tool]) cap.textContent = toolCaptions[tool][idx];
+      document.querySelectorAll('.tool-dot[data-tool="' + tool + '"]').forEach(function(d){
+        d.classList.toggle('active', d === dot);
+      });
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
