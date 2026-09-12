@@ -94,6 +94,56 @@ a{color:var(--navy-700);}
 .tab-btn.active{background:var(--cyan-500); color:#04202F;}
 
 /* ============================================================
+   ANIMACIONES — solo vista Inicio
+============================================================ */
+@keyframes fadeSlideUp{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes drawLine{ to{ stroke-dashoffset:0; } }
+@keyframes popDot{
+  from{opacity:0; transform:scale(0);}
+  to{opacity:1; transform:scale(1);}
+}
+
+.home-icon-mark{margin-bottom:16px;}
+.home-icon-mark svg{overflow:visible; display:block;}
+.im-line{
+  fill:none; stroke:#fff; stroke-width:4; stroke-linecap:round;
+  stroke-dasharray:120; stroke-dashoffset:120;
+  animation:drawLine .5s ease forwards;
+}
+.im-line:nth-child(1){animation-delay:.05s;}
+.im-line:nth-child(2){animation-delay:.25s;}
+.im-line:nth-child(3){animation-delay:.05s;}
+.im-line:nth-child(4){animation-delay:.25s;}
+.im-dot{
+  fill:var(--cyan-300); opacity:0; transform-origin:center; transform-box:fill-box;
+  animation:popDot .35s ease forwards;
+}
+.im-dot:nth-child(5){animation-delay:.4s;}
+.im-dot:nth-child(6){animation-delay:.55s;}
+.im-dot:nth-child(7){animation-delay:.4s;}
+.im-dot:nth-child(8){animation-delay:.55s;}
+
+.home-hero.active .home-eyebrow,
+.home-hero.active h1,
+.home-hero.active p.lead,
+.home-hero.active .cta-start{
+  opacity:0; animation:fadeSlideUp .6s ease forwards;
+}
+.home-hero.active .home-eyebrow{animation-delay:.65s;}
+.home-hero.active h1{animation-delay:.78s;}
+.home-hero.active p.lead{animation-delay:.95s;}
+.home-hero.active .cta-start{animation-delay:1.12s;}
+
+@media (prefers-reduced-motion: reduce){
+  .home-eyebrow, .home-hero h1, .home-hero p.lead, .cta-start, .im-line, .im-dot{
+    opacity:1 !important; transform:none !important; stroke-dashoffset:0 !important; animation:none !important;
+  }
+}
+
+/* ============================================================
    INICIO — pantalla completa (independiente del rail)
 ============================================================ */
 .home-hero{
@@ -518,14 +568,23 @@ footer.site-footer{
 </div>
 
 <!-- ============================================================
-     COVER
-============================================================ -->
-<!-- ============================================================
      INICIO — pantalla completa
 ============================================================ -->
 <div class="home-hero active" id="view-home">
   <div class="home-hero-inner">
     <div class="home-left">
+      <div class="home-icon-mark" aria-hidden="true">
+        <svg viewBox="0 0 100 110" width="56" height="62">
+          <path class="im-line" d="M12,55 L78,15"/>
+          <path class="im-line" d="M78,15 L55,95"/>
+          <path class="im-line" d="M12,55 L38,68"/>
+          <path class="im-line" d="M38,68 L55,95"/>
+          <circle class="im-dot" cx="12" cy="55" r="7"/>
+          <circle class="im-dot" cx="78" cy="15" r="7"/>
+          <circle class="im-dot" cx="38" cy="68" r="7"/>
+          <circle class="im-dot" cx="55" cy="95" r="7"/>
+        </svg>
+      </div>
       <div class="home-eyebrow"><span class="home-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
       <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
       <p class="lead">Tres clientes, tres necesidades distintas: mantenimiento, operación y seguridad, y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
