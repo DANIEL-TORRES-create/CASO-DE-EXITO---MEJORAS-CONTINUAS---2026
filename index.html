@@ -97,49 +97,28 @@ a{color:var(--navy-700);}
    ANIMACIONES — solo vista Inicio
 ============================================================ */
 @keyframes fadeSlideUp{
-  from{opacity:0; transform:translateY(14px);}
+  from{opacity:0; transform:translateY(22px);}
   to{opacity:1; transform:translateY(0);}
 }
-@keyframes drawLine{ to{ stroke-dashoffset:0; } }
-@keyframes popDot{
-  from{opacity:0; transform:scale(0);}
-  to{opacity:1; transform:scale(1);}
-}
-
-.home-icon-mark{margin-bottom:16px;}
-.home-icon-mark svg{overflow:visible; display:block;}
-.im-line{
-  fill:none; stroke:#fff; stroke-width:4; stroke-linecap:round;
-  stroke-dasharray:120; stroke-dashoffset:120;
-  animation:drawLine .5s ease forwards;
-}
-.im-line:nth-child(1){animation-delay:.05s;}
-.im-line:nth-child(2){animation-delay:.25s;}
-.im-line:nth-child(3){animation-delay:.05s;}
-.im-line:nth-child(4){animation-delay:.25s;}
-.im-dot{
-  fill:var(--cyan-300); opacity:0; transform-origin:center; transform-box:fill-box;
-  animation:popDot .35s ease forwards;
-}
-.im-dot:nth-child(5){animation-delay:.4s;}
-.im-dot:nth-child(6){animation-delay:.55s;}
-.im-dot:nth-child(7){animation-delay:.4s;}
-.im-dot:nth-child(8){animation-delay:.55s;}
 
 .home-hero.active .home-eyebrow,
 .home-hero.active h1,
 .home-hero.active p.lead,
-.home-hero.active .cta-start{
-  opacity:0; animation:fadeSlideUp .6s ease forwards;
+.home-hero.active .cta-start,
+.home-hero.active .client-pick{
+  opacity:0; animation:fadeSlideUp .8s ease forwards;
 }
-.home-hero.active .home-eyebrow{animation-delay:.65s;}
-.home-hero.active h1{animation-delay:.78s;}
-.home-hero.active p.lead{animation-delay:.95s;}
-.home-hero.active .cta-start{animation-delay:1.12s;}
+.home-hero.active .home-eyebrow{animation-delay:.15s;}
+.home-hero.active h1{animation-delay:.45s;}
+.home-hero.active p.lead{animation-delay:.85s;}
+.home-hero.active .cta-start{animation-delay:1.15s;}
+.home-hero.active .client-pick:nth-of-type(1){animation-delay:.55s;}
+.home-hero.active .client-pick:nth-of-type(2){animation-delay:.75s;}
+.home-hero.active .client-pick:nth-of-type(3){animation-delay:.95s;}
 
 @media (prefers-reduced-motion: reduce){
-  .home-eyebrow, .home-hero h1, .home-hero p.lead, .cta-start, .im-line, .im-dot{
-    opacity:1 !important; transform:none !important; stroke-dashoffset:0 !important; animation:none !important;
+  .home-eyebrow, .home-hero h1, .home-hero p.lead, .cta-start, .client-pick{
+    opacity:1 !important; transform:none !important; animation:none !important;
   }
 }
 
@@ -147,16 +126,39 @@ a{color:var(--navy-700);}
    INICIO — pantalla completa (independiente del rail)
 ============================================================ */
 .home-hero{
-  display:none;
+  display:none; position:relative; overflow:hidden;
   min-height:calc(100vh - 56px);
   background:linear-gradient(150deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--cyan-500) 130%);
   color:#fff; align-items:center;
   padding:56px 24px;
 }
 .home-hero.active{display:flex;}
-.home-hero-inner{max-width:var(--maxw); margin:0 auto; width:100%;
+.home-hero-inner{max-width:var(--maxw); margin:0 auto; width:100%; position:relative; z-index:1;
   display:grid; grid-template-columns:1.35fr 1fr; gap:56px; align-items:center;
 }
+
+/* ---- Ambientación de fondo: rutas + señales GPS parpadeando ---- */
+.home-bg-fx{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+.bg-routes{position:absolute; inset:0; width:100%; height:100%;}
+.route-line{
+  fill:none; stroke:rgba(255,255,255,.09); stroke-width:1.4;
+  stroke-dasharray:5 15;
+  animation:routeFlow 20s linear infinite;
+}
+.route-line:nth-child(2){animation-duration:26s; stroke:rgba(143,220,243,.09);}
+.route-line:nth-child(3){animation-duration:23s;}
+.route-line:nth-child(4){animation-duration:29s; stroke:rgba(143,220,243,.07);}
+@keyframes routeFlow{ to{ stroke-dashoffset:-400; } }
+.bg-dot{
+  position:absolute; width:4px; height:4px; border-radius:50%;
+  background:var(--cyan-300); opacity:0;
+  animation:blinkDot 4.5s ease-in-out infinite;
+}
+@keyframes blinkDot{
+  0%,100%{opacity:0;}
+  50%{opacity:.7;}
+}
+
 .home-eyebrow{
   display:inline-flex; align-items:center; gap:8px;
   font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600;
@@ -571,20 +573,26 @@ footer.site-footer{
      INICIO — pantalla completa
 ============================================================ -->
 <div class="home-hero active" id="view-home">
+  <div class="home-bg-fx" aria-hidden="true">
+    <svg class="bg-routes" viewBox="0 0 1200 700" preserveAspectRatio="none">
+      <path class="route-line" d="M-50,620 L420,120"/>
+      <path class="route-line" d="M120,700 L680,40"/>
+      <path class="route-line" d="M520,700 L1080,90"/>
+      <path class="route-line" d="M830,700 L1300,210"/>
+    </svg>
+    <span class="bg-dot" style="top:14%; left:58%; animation-delay:.2s;"></span>
+    <span class="bg-dot" style="top:22%; left:78%; animation-delay:1.6s;"></span>
+    <span class="bg-dot" style="top:38%; left:66%; animation-delay:2.8s;"></span>
+    <span class="bg-dot" style="top:52%; left:85%; animation-delay:.9s;"></span>
+    <span class="bg-dot" style="top:64%; left:60%; animation-delay:3.4s;"></span>
+    <span class="bg-dot" style="top:72%; left:75%; animation-delay:1.9s;"></span>
+    <span class="bg-dot" style="top:20%; left:10%; animation-delay:2.3s;"></span>
+    <span class="bg-dot" style="top:82%; left:20%; animation-delay:.5s;"></span>
+    <span class="bg-dot" style="top:8%; left:35%; animation-delay:3.9s;"></span>
+    <span class="bg-dot" style="top:90%; left:48%; animation-delay:1.2s;"></span>
+  </div>
   <div class="home-hero-inner">
     <div class="home-left">
-      <div class="home-icon-mark" aria-hidden="true">
-        <svg viewBox="0 0 100 110" width="56" height="62">
-          <path class="im-line" d="M12,55 L78,15"/>
-          <path class="im-line" d="M78,15 L55,95"/>
-          <path class="im-line" d="M12,55 L38,68"/>
-          <path class="im-line" d="M38,68 L55,95"/>
-          <circle class="im-dot" cx="12" cy="55" r="7"/>
-          <circle class="im-dot" cx="78" cy="15" r="7"/>
-          <circle class="im-dot" cx="38" cy="68" r="7"/>
-          <circle class="im-dot" cx="55" cy="95" r="7"/>
-        </svg>
-      </div>
       <div class="home-eyebrow"><span class="home-node"></span>MEJORAS CONTINUAS DANIEL TORRES · 2025–2026</div>
       <h1>El impacto de nuestra gestión, contado con datos reales.</h1>
       <p class="lead">Tres clientes, tres necesidades distintas: mantenimiento, operación y seguridad, y una misma forma de trabajar: entender el problema del cliente a fondo y construir la herramienta exacta que lo resuelve.</p>
@@ -1427,6 +1435,28 @@ footer.site-footer{
     railBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.caseNav === id); });
     window.scrollTo({top:0, behavior:'auto'});
     if(typeof resizeAllPreviews === 'function') resizeAllPreviews();
+    if(!isHome){
+      var numEl = document.querySelector('#case-' + id + ' .headline-stat .num');
+      if(numEl) animateCount(numEl);
+    }
+  }
+
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el){
+    var target = parseInt(el.dataset.target || el.textContent, 10);
+    if(isNaN(target)) return;
+    el.dataset.target = target;
+    if(prefersReducedMotion){ el.textContent = target; return; }
+    var duration = 900, startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
   }
 
   tabs.forEach(function(t){
