@@ -1447,7 +1447,7 @@ footer.site-footer{
     if(isNaN(target)) return;
     el.dataset.target = target;
     if(prefersReducedMotion){ el.textContent = target; return; }
-    var duration = 900, startTime = null;
+    var duration = 2000, startTime = null;
     function step(ts){
       if(!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration, 1);
